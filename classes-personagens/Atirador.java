@@ -15,6 +15,7 @@ public class Atirador {
 		return this.vida;
 	}
 	
+	// aumento da saude com pocao de vida
 	public int setSaude(int saude) {
 		this.vida = this.vida + saude;
 		return this.saude;
@@ -26,15 +27,15 @@ public class Atirador {
 		return this.forca;
 	}
 	
-	//mudanca do valor do dano da cineraria com pontos de habilidade
+	//mudanca do valor do dano da bala com pontos de habilidade
 		public int setBala(int bala){
 			this.bala = bala * this.forca;
 			return this.bala;
 		}
 		
-		//mudanca do valor do dano de infligir doenca com pontos de habilidade
-		public int setMolotov(int infligirDoenca) {
-			this.molotov = infligirDoenca * this.forca;
-			return this.molotov;
-		}
+	//mudanca do valor do dano do molotov com pontos de habilidade
+	public int setMolotov(int molotov) {
+		this.molotov = molotov * this.forca;
+		return this.molotov;
+	}
 }

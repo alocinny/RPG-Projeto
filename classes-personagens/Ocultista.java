@@ -14,6 +14,8 @@ public class Ocultista {
 		return this.vida;
 	}
 	
+	
+	//aumento da saude com pocao de vida
 	public int setSaude(int saude) {
 		this.vida = this.vida + saude;
 		return this.saude;
