@@ -1,22 +1,22 @@
 package personagens;
 
-public class Ocultista {
+public class Combatente{
     private int vida;
-    private int danoCineraria;
-    private int danoInfligirDoença;
+    private int danoSoco;
+    private int danoChute;
 
-    public Atirador(){
-        this.vida = 80;
-        this danoCineraria = 10;
-        this danoInfligirDoença = 15;
+    public void combatente(){
+        this.vida = 100;
+        this.danoSoco = 9;
+        this.danoChute = 12;
     }
 
     public int ataque(int escolha){
         switch(escolha){
             case 1:
-                return danoCineraria;
+                return danoSoco;
             case 2: 
-                return danoInfligirDoença;
+                return danoChute;
             default:
                 return 0;
         }

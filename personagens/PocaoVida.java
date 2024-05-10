@@ -1,6 +1,7 @@
+package personagens;
 public class PocaoVida {
 
     public int pocaoVida(int pocao){
-        //codigo
+        return 0;
     }
 }

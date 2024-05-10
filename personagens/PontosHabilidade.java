@@ -1,3 +1,4 @@
+package personagens;
 public class PontosHabilidade {
     private int pontosHabilidade = 0;
     
