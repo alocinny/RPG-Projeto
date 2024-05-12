@@ -5,21 +5,18 @@ public class Combatente{
     private int danoSoco;
     private int danoChute;
 
-    public void combatente(){
+    public Combatente(){
         this.vida = 100;
-        this.danoSoco = 9;
-        this.danoChute = 12;
+        this.danoSoco = 10;
+        this.danoChute = 15;
     }
 
-    public int ataque(int escolha){
-        switch(escolha){
-            case 1:
-                return danoSoco;
-            case 2: 
-                return danoChute;
-            default:
-                return 0;
-        }
+    public int ataque1(){
+        return danoSoco;
+    }
+
+    public int ataque2(){
+        return danoChute;
     }
 
     public void LevarDano(int danoLevado){
@@ -29,4 +26,8 @@ public class Combatente{
     public boolean Vivo(){
         return vida > 0;
     }
+
+    public int Vida(){
+		return this.vida;
+	}
 }

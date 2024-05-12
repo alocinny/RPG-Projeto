@@ -1,4 +1,6 @@
-package personagens;
+//codigo teste de movimento
+
+package Movimento;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
