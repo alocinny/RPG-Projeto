@@ -27,6 +27,10 @@ public class Atirador {
         return vida > 0;
     }
 
+    public int Pocao() {
+        return vida+= 15; 
+     }
+     
     public int Vida(){
 		return this.vida;
 	}
