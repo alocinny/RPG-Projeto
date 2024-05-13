@@ -1,4 +1,4 @@
-package MenuCombate;
+package menuCombate;
 import java.util.Scanner;
 import inimigos.Aberracao;
 //import objetos.PocaoVida; nao deu certo
@@ -8,6 +8,7 @@ import personagens.Ocultista;
 
 public class MenuOcultistaxAberracao {
 
+    //teste sistema de combate - console
     public static void main (String[] args) {
 
         Ocultista ocultista = new Ocultista ();
@@ -57,11 +58,6 @@ public class MenuOcultistaxAberracao {
 
             System.out.println("\nvida do ocultista " + ocultista.Vida());
             System.out.println("vida aberracao de sangue " + aberracao.Vida());
-
-
-        
-
-        
         
         }
         System.out.println("voce fugiu do combate");

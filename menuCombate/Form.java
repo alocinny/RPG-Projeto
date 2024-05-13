@@ -1,4 +1,4 @@
-package MenuCombate;
+package menuCombate;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JButton;
