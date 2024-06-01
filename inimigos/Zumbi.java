@@ -1,29 +1,21 @@
-package inimigos;
+package Inimigos;
+import Personagens.Personagens;
 
-public class Zumbi {
-	private int vida;
-	private int danoChoque;
-	
-	public Zumbi () {
-		this.vida = 100;
-		this.danoChoque = 15;
+public class Zumbi extends Personagens{
+
+	//CONSTRUTOR --------------------------------------
+	public Zumbi(int[] saude, int[] habilidades) {
+		super(saude, habilidades);
 	}
-	
-	public int ataque () {
-		return danoChoque;
+
+	public int defender(int danoLevado){
+		
+        //dano recebido - a agilidade que reduz o dano do ataque
+        //verificar se fica negativo
+		if(danoLevado - getAgilidade() < 0){
+            return 0;
+        } else {
+            return danoLevado - getAgilidade();
+        }
 	}
-	
-	
-	public void LevarDano (int danoLevado) {
-		vida -= danoLevado;
-	}
-	
-	public boolean Vivo() {
-		return vida > 0;
-	}
-	
-	public int Vida(){
-		return this.vida;
-	}
-	
 }

@@ -1,13 +1,14 @@
-package Inimigos;
+package Agentes;
 import Personagens.Personagens;
 
-public class Aberracao extends Personagens{
+public class Combatente extends Personagens{
+    
+    //CONSTRUTOR --------------------------------------
+    public Combatente(int[] saude, int[] habilidades){
+        super(habilidades, habilidades);
+    }
 
-	//CONSTRUTOR --------------------------------------
-	public Aberracao(int[] saude, int[] habilidades) {
-		super(saude, habilidades);
-	}
-	public int defender(int danoLevado){
+    public int defender(int danoLevado){
 		
         //dano recebido - a agilidade que reduz o dano do ataque
         //verificar se fica negativo

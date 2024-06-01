@@ -1,3 +1,5 @@
-public class ObjAmaldicoados {
+package Objetos;
+
+public class ObjAmaldicoados{
     
 }

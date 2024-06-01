@@ -1,28 +1,21 @@
-package inimigos;
+package Inimigos;
+import Personagens.Personagens;
 
-public class Vultos {
-	private int vida;
-	private int danoDash;
+public class Vultos extends Personagens{
 	
-	public Vultos() {
-		this.vida = 100;
-		this.danoDash = 15;
+	//CONSTRUTOR --------------------------------------
+	public Vultos(int[] saude, int[] habilidades) {
+		super(saude, habilidades);
 	}
-	
-	public int ataque () {
-		return danoDash;
-	}
-	
-	
-	public void LevarDano (int danoLevado) {
-		vida -= danoLevado;
-	}
-	
-	public boolean Vivo() {
-		return vida > 0;
-	}
-	
-	public int Vida(){
-		return this.vida;
+
+	public int defender(int danoLevado){
+		
+        //dano recebido - a agilidade que reduz o dano do ataque
+        //verificar se fica negativo
+		if(danoLevado - getAgilidade() < 0){
+            return 0;
+        } else {
+            return danoLevado - getAgilidade();
+        }
 	}
 }

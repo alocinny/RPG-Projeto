@@ -1,30 +1,21 @@
-package inimigos;
+package Inimigos;
+import Personagens.Personagens;
 
-public class Existidos {
-	private int vida;
-	private int danoLuz;
+public class Existidos extends Personagens{
 	
-	public Existidos() {
-		this.vida = 100;
-		this.danoLuz = 15;
+	//CONSTRUTOR --------------------------------------
+	public Existidos(int[] saude, int[] habilidades) {
+		super(saude, habilidades);
 	}
-	
-	public int ataque () {
+
+	public int defender(int danoLevado){
 		
-		return danoLuz;
-	}
-	
-	
-	public void LevarDano (int danoLevado) {
-		vida -= danoLevado;
-	}
-	
-	public boolean Vivo() {
-		return vida > 0;
-		
-	}
-	
-	public int Vida(){
-		return this.vida;
+        //dano recebido - a agilidade que reduz o dano do ataque
+        //verificar se fica negativo
+		if(danoLevado - getAgilidade() < 0){
+            return 0;
+        } else {
+            return danoLevado - getAgilidade();
+        }
 	}
 }
