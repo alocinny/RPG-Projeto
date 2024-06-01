@@ -1,3 +1,5 @@
-public class chaves {
+package Objetos;
+
+public class Chaves {
     
 }

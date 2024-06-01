@@ -1,70 +1,39 @@
-package menuCombate;
+package MenuCombate;
 import java.util.Scanner;
-import inimigos.Aberracao;
-//import objetos.PocaoVida; nao deu certo
-import personagens.Ocultista;
 
-
+import Agentes.*;
+import Inimigos.*;
+import Objetos.*;
 
 public class MenuOcultistaxAberracao {
-
+    
     //teste sistema de combate - console
     public static void main (String[] args) {
 
-        Ocultista ocultista = new Ocultista ();
-        Aberracao aberracao = new Aberracao ();
-        Scanner escolhaAtaque = new Scanner(System.in);
+        int[] saudeOcultista = {100, 2};
+        int[] saudeAberracao = {100, 0};
+        int[] habilidadesOcultista = {15, 5, 0, 5}; //afinidade, agilidade, sanidade, vigor
+        int[] habilidadesAberracao = {10, 5, 0, 3};
+
+        Ocultista ocultista = new Ocultista(saudeOcultista, habilidadesOcultista);
+        Aberracao aberracao = new Aberracao(saudeAberracao, habilidadesAberracao);
+
+        Scanner escolha = new Scanner(System.in);
         
         
-        System.out.println("Escolha: \n1-fugir \n2-lutar");
-        int decisaoLutar = escolhaAtaque.nextInt();
+        while(ocultista.Vivo() && aberracao.Vivo()){
+            //imprimindo valores de vida 
+            System.out.println("Ocultista: " + String.valueOf(ocultista.getVida()));
+            System.out.println("Aberracao: " + String.valueOf(aberracao.getVida()));
 
-        int ataqueInimigo = aberracao.ataque();
+            //seleção de escolha
+            System.out.println("\nEscolha: \n1 - desviar \n2 - atacar");
+            int decisao = escolha.nextInt();
 
-        if (decisaoLutar == 2){
-        while(ocultista.Vivo()&& aberracao.Vivo()){
+            if(decisao == 1){
 
-            System.out.print("Escolha: \nAtaque 1- Cineraria\nAtaque 2- Infligir Doenca\nCura   3- Usar pocao \nEscapar  4- Nao lutar");
-            int decisao = escolhaAtaque.nextInt();
-
-            if (decisao == 1){
-                int ataquePlayer = ocultista.ataque1();
-                aberracao.LevarDano(ataquePlayer);
-                System.out.println("\n\n o ocultista ataca a aberracao de sangue " +ataquePlayer + " de dano");
-                
             }
-
-            if (decisao == 2){
-                int ataquePlayer = ocultista.ataque2();
-                aberracao.LevarDano(ataquePlayer);
-                System.out.println("\n\n o ocultista ataca a aberracao de sangue " +ataquePlayer + " de dano");
-            }
-
-            if (decisao == 3){
-               ocultista.Pocao();
-               //pocaoVida.PegouPocaoCura(); comando nao funcionou
-            
-            }
-
-            if (decisao == 4) {
-                break;
-            }
-
-    
-            ocultista.LevarDano(ataqueInimigo);
-           
-
-            System.out.println("Aberracao ataca " + ataqueInimigo + " de dano");
-
-            System.out.println("\nvida do ocultista " + ocultista.Vida());
-            System.out.println("vida aberracao de sangue " + aberracao.Vida());
-        
         }
-        System.out.println("voce fugiu do combate");
-
-    }else {
-    System.out.println("voce escolheu nao lutar");
+        escolha.close();
     }
-    escolhaAtaque.close();
-}
 }

@@ -1,30 +1,21 @@
-package inimigos;
+package Inimigos;
+import Personagens.Personagens;
 
-public class Marionete {
-	
-	private int vida;
-	private int danoAtaque;
-	
-	public Marionete() {
-		this.vida = 100;
-		this.danoAtaque = 16;
+public class Marionete extends Personagens{
+
+	//CONSTRUTOR --------------------------------------
+	public Marionete(int[] saude, int[] habilidades) {
+		super(saude, habilidades);
 	}
 	
-	public int ataque () {
-		return danoAtaque;
+	public int defender(int danoLevado){
+		
+        //dano recebido - a agilidade que reduz o dano do ataque
+        //verificar se fica negativo
+		if(danoLevado - getAgilidade() < 0){
+            return 0;
+        } else {
+            return danoLevado - getAgilidade();
+        }
 	}
-	
-	
-	public void LevarDano (int danoLevado) {
-		vida -= danoLevado;
-	}
-	
-	public boolean Vivo() {
-		return vida > 0;
-	}
-	
-	public int Vida(){
-		return this.vida;
-	}
-	
 }
