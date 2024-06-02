@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 public class Janela {
-    public static void main (String[] args) {
+    public static void Win() {
 
         JLabel label = new JLabel("MENU COMBATE", JLabel.CENTER); //adicionar textos
         label.setFont(new Font("Calibri", Font.BOLD, 40)); // fonte da escrita
@@ -19,6 +19,4 @@ public class Janela {
         janela.getContentPane().setBackground(new Color(200,30,50)); //cor da janela
         janela.setTitle("RPG");
     }
-
-   
 }
