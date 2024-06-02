@@ -1,6 +1,7 @@
 import Agentes.*;
 import Inimigos.*;
 import InterfaceMenu.*;
+import Personagens.Personagens;
 
 public class Main {
        private static int[] saudeOcultista = {100, 2};
@@ -21,7 +22,7 @@ public class Main {
         
     }
     
-    public static void batalha(Ocultista ocultista, Aberracao aberracao){
+    public static void batalha(Personagens ocultista, Personagens aberracao){
 
     }
 }
