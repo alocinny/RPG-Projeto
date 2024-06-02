@@ -1,4 +1,4 @@
-package menuCombate;
+package InterfaceMenu;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -17,14 +17,11 @@ public class Form extends JFrame{
 
         //criar os botoes
 
-
         cmd_sair = new JButton("Sair");
         cmd_sair.setBounds(50,50,120,30); // localizacao do botao
 
         //adicionar os botoes ao formulario
 
         add(cmd_sair);
-
-
     }
 }
