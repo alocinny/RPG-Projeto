@@ -1,5 +1,5 @@
-package Objetos;
+package objetos;
 
-public class Chaves {
+public class chaves {
     
 }
