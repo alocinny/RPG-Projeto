@@ -1,4 +1,4 @@
-package MenuCombate;
+package menuCombate;
 //import java.awt.Dimension;
 
 public class janela2 {

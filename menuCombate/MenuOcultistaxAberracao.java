@@ -1,9 +1,9 @@
-package MenuCombate;
+package menuCombate;
 import java.util.Scanner;
 
 import Agentes.*;
 import Inimigos.*;
-import Objetos.*;
+import objetos.*;
 
 public class MenuOcultistaxAberracao {
     
