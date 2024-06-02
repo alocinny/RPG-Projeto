@@ -48,6 +48,6 @@ public class Inventario {
     }
 
     public int getPocaoVida(){
-        return this.inventario[3];
+        return this.inventario[2];
     }
 }

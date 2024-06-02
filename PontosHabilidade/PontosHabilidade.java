@@ -1,19 +1,34 @@
+/*
+ * PROGRESSÃO DE NÍVEL SERÁ DADO A PARTIR DO USO DE PONTOS DE HABILIDADE PARA UPAR AGILIDADE (AUMENTAR DEFESA) OU AFINIDADE (DANO DO ATAQUE).
+ * ponto de habilidade será adquirido ao pegar objetos amaldiçoados e matar criaturas (5 por objetos amaldiçoados e 1 por criaturas)
+ */
+
 package PontosHabilidade;
 
 public class PontosHabilidade {
-    private int pontosHabilidade = 0;
-    
-    public int GanharPontosHabilidade(){
-        this.pontosHabilidade += 1;
-        return this.pontosHabilidade;
+
+    private int pontosHabilidade;
+
+    //CONSTRUTOR -------------------------------------
+
+    public PontosHabilidade(int pontosHabilidade){
+        this.pontosHabilidade = pontosHabilidade;
     }
     
-    public int GastarPontosHabilidades(){
-        this.pontosHabilidade -= 1;
+    //GETTERS E SETTERS ------------------------------
+
+    //set
+    public void setGanhaPontosHabilidade(int pontoAdquirido){
+        this.pontosHabilidade += pontoAdquirido;
+    }
+
+    public void setUsaPontoHabilidade(int pontoUsado){
+        this.pontosHabilidade -= pontoUsado;
+    }
+
+    //get
+    public int getPontosHabilidade(){
         return this.pontosHabilidade;
     }
 
-    public boolean temPontosHabilidade(){
-        return pontosHabilidade > 0;
-    }
 }
