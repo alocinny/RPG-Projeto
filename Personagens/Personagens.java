@@ -45,12 +45,12 @@ public class Personagens {
         this.habilidades[1] = agilidade;
     }
 
-    public void setInteligencia(int investigacao){
-        this.habilidades[2] = investigacao;
+    public void setHistamina(int sanidade){
+        this.habilidades[2] = sanidade;
     }
 
-    public void setAgilidade(int sanidade){
-        this.habilidades[3] = sanidade;
+    public void setMaisforca(int vigor){
+        this.habilidades[3] = vigor;
     }
 
     //getters 
