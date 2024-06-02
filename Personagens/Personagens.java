@@ -80,11 +80,12 @@ public class Personagens {
 
     //MÉTODOS -------------------------------------------
 
-    //ataque - força do personagem que está atacando - defesa do personagem que esta defendendo
+    //ataque - força do personagem que está atacando - defesa do personagem que esta defendendo (dano do ataque)
     public int ataque(int defesa){
         return getAfinidade() - defesa;
     }
 
+    //vida apos ataque
     public int dano(int vida, int danoLevado){
         //verificando se a vida ficará negativa com o dano
         if(vida - danoLevado >= 0){

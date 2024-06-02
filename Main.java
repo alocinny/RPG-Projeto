@@ -23,6 +23,6 @@ public class Main {
     }
     
     public static void batalha(Personagens ocultista, Personagens aberracao){
-
+        
     }
 }
