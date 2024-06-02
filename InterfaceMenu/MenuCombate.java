@@ -30,8 +30,16 @@ public class MenuCombate extends JFrame{
                 JOptionPane.showMessageDialog(null, "voce atacou");
             }
         });
-        botaoAtacar.setBounds(400,300,90,25);
+        botaoAtacar.setBounds(300,300,100,30);
         Win.add(botaoAtacar);
 
+        JButton botaoDefender = new JButton("DEFENDER");
+        botaoDefender.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent k){
+                JOptionPane.showMessageDialog(null, "voce defendeu");
+            }
+        });
+        botaoDefender.setBounds(300,350,100,30);
+        Win.add(botaoDefender);
     }
 }
