@@ -1,0 +1,7 @@
+ideia do mapa: procedural map generation criando um mapa geral, utilizando imagens para colocar elementos no mapa como casa, baús e etc
+
+algumas casas poderão ser acessadas e em algumas terão baús e outras cartas contando um pouco da lore do jogo.
+
+poderá ser encontrado nos baús chaves, objetos amaldiçoados (personalização do personagem) e poções de vida.
+
+as chaves libram acesso a algumas casas
