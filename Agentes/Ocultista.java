@@ -8,6 +8,20 @@ public class Ocultista extends Personagens{
         super(saude, habilidades);
     }
 
+    @Override //sobrescrevendo o metodo ataque da classe pai Personagem na classe ocultista
+    public int ataque(int defesa) {
+        int danoBase = getAfinidade();
+        int danoTotal = danoBase; 
+
+        // O dano não pode ser negativo
+        if (danoTotal < 0) {
+            danoTotal = 0;
+        }
+
+        return danoTotal;
+    }
+
+
     public int defender(int danoLevado){
 		
         //dano recebido - a agilidade que reduz o dano do ataque
