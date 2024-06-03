@@ -1,7 +1,7 @@
 package Inventario;
 
 public class Inventario {
-    //inventario - por enquanto trabalhando com um tamanho fixo
+    //inventario - por enquanto trabalhando com um tamanho fixo, ainda vamos decidir como será para o objeto amaldiçoado uma vez que é para personalização do player. trataremos poção de cura e chaves como numeros inteiros, indicando a sau respectiva quantidade e a descrição quando for imprimir na tela (será adicionado uma janela que mostrará todo o inventário depois quando formos implementar gráficos no jogo)
     private int[] inventario = new int[3];
 
     //CONSTRUTOR ----------------------------------------------------------
