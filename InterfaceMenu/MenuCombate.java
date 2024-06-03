@@ -21,6 +21,7 @@ public class MenuCombate extends JFrame{
         contentPanel.setBorder(new EmptyBorder(10,10,10,10));
         
         JFrame Win = new JFrame("teste");
+        Win.setLayout(null);
         Win.setSize(1600, 900);
         Win.setVisible(true);
 
