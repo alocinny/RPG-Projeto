@@ -1,0 +1,7 @@
+obs 1: por causa da semana de provas e trabalhos de outras cadeiras, não conseguimos adicionar as interações com elementos do mapa como itens. Só conseguimos colocar o movimento do player.
+Nessa semana após aprimorar a interface do mapa iremos adicionar os outros elementos de interação (observações adicionais em Mapa/txtBase.txt)
+
+obs2: sobre a interface do usuário na batalha, foi adicionado e está como comentário na main.
+
+-- parte da interface gráfica
+faltando adicionar botões para defesa e uso de poção no menu de combate, assim como o botão para mostrar o inventário completo (ver comentário em Inventario/Inventario.java)

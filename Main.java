@@ -1,6 +1,8 @@
 import Agentes.*;
 import Inimigos.*;
 import InterfaceMenu.*;
+import Mapa.MapaBase;
+import Movimento.TesteMapa;
 import Personagens.Personagens;
 
 public class Main {
@@ -8,12 +10,18 @@ public class Main {
     private static int[] saudeAberracao = {100, 0};
     private static int[] habilidadesOcultista = {15, 5, 0, 5}; //afinidade, agilidade, sanidade, vigor
     private static int[] habilidadesAberracao = {10, 5, 0, 3};
+    private static int[] posicao;
 
     public static void main(String[] args) {
-        Ocultista ocultista = new Ocultista(saudeOcultista, habilidadesOcultista);
-        Aberracao aberracao = new Aberracao(saudeAberracao, habilidadesAberracao);
-        
-        MenuCombate menuCombate = new MenuCombate(ocultista, aberracao);
-        menuCombate.setVisible(true);
+
+        /*
+         * Ocultista ocultista = new Ocultista(saudeOcultista, habilidadesOcultista);
+         * Aberracao aberracao = new Aberracao(saudeAberracao, habilidadesAberracao);
+         * MenuCombate menuCombate = new MenuCombate(ocultista, aberracao);
+         * 
+        */
+    
+        TesteMapa mapa = new TesteMapa();
+        mapa.rodar();
     }
 }

@@ -43,15 +43,5 @@ public class Mapa {
         // mostra a janela e adiciona o label a ela
         janela.setVisible(true);
         janela.add(label);
-
-
-
-
     }
-
-    
-
-
-
-
 }

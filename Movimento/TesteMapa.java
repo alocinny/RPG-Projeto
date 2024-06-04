@@ -6,13 +6,14 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Movimento extends JPanel implements KeyListener {
-    private int playerX = 50;
-    private int playerY = 50;
+public class TesteMapa extends JPanel implements KeyListener {
+    //private int playerX = 50;
+    //private int playerY = 50;
+    private int[] position = {50,50};
     private int dimensionX = 1600;
     private int dimensionY = 900;
 
-    public Movimento() {
+    public TesteMapa() {
         setPreferredSize(new Dimension(dimensionX, dimensionY));
         setBackground(Color.BLACK);
         setFocusable(true);
@@ -22,32 +23,29 @@ public class Movimento extends JPanel implements KeyListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.MAGENTA);
-        g.fillRect(playerX, playerY, 20, 20);
+        g.fillRect(position[0], position[1], 20, 20);
     }
 
     public void keyPressed(KeyEvent k) {
         int key = k.getKeyCode();
-
         
-            if (key == KeyEvent.VK_LEFT) {
-                
-
-                playerX -= 5;
-                
-            }
-    
-            if (key == KeyEvent.VK_RIGHT) {
-                playerX += 5;
-            }
-
-        if(playerY > 0 || playerY <= 900){
-
+        
+        if (key == KeyEvent.VK_LEFT) {
+            position[0] -= 5;
+        }
+        
+        if (key == KeyEvent.VK_RIGHT) {
+            position[0] += 5;
+        }
+        
+        if(position[1] > 0 || position[1] <= 900){
+            
             if (key == KeyEvent.VK_UP) {
-                playerY -= 5;
+                position[1] -= 5;
             }
-    
+            
             if (key == KeyEvent.VK_DOWN) {
-                playerY += 5;
+                position[1] += 5;
             }
         }
 
@@ -62,7 +60,7 @@ public class Movimento extends JPanel implements KeyListener {
 
     public void rodar() {
         JFrame frame = new JFrame("Player Movement");
-        Movimento panel = new Movimento();
+        TesteMapa panel = new TesteMapa();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(panel);
@@ -71,5 +69,9 @@ public class Movimento extends JPanel implements KeyListener {
         frame.setVisible(true);
 
         panel.requestFocusInWindow();
+    }
+
+    public int[] getPosition(){
+        return position;
     }
 }
