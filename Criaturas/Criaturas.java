@@ -1,12 +1,12 @@
 package Criaturas;
 
 public class Criaturas {
-    private int[] habilidade; //afinidade, agilidade
+    private int[] habilidades; //afinidade, agilidade
     private int vida;
 
     //construtor
     public Criaturas(int[] hability, int life){
-        this.habilidade = hability;
+        this.habilidades = hability;
         this.vida = life;
     }
 
@@ -20,7 +20,7 @@ public class Criaturas {
                 break;
             case 1: 
             //caso a criatura decida atacar - decremenda o dano do ataque do agente - agilidade da criatura
-                this.vida-=danoLevado-this.habilidade[1];
+                this.vida-=danoLevado-this.habilidades[1];
                 break;
             default:
                 break;
@@ -35,7 +35,7 @@ public class Criaturas {
 
     public int getAfinidade(){
         //retorna o dano da criatura
-        return habilidade[0];
+        return habilidades[0];
     }
 
     public boolean vivo(){
