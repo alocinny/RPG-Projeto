@@ -1,8 +1,8 @@
 package Agentes;
 
 public class Agentes {
-    protected int[] habilidade; //{afinidade, vigor, agilidade, constituicao}
-    protected int[] saude; //{vida, ritualCura}
+    private int[] habilidade; //{afinidade, vigor, agilidade, constituicao}
+    private int[] saude; //{vida, ritualCura}
 
     //construtor
     public Agentes(int[] hability, int[] health){
@@ -12,28 +12,38 @@ public class Agentes {
 
     //setters
     public void newAfinidade(){
-        //quando progride o nivel incrementa a habilidade com o valor do vigor
+        //atualiza o vigor quando progride o nivel - incrementa a habilidade com o valor do vigor
         habilidade[0]+=habilidade[1];
     }
 
     public void newAgilidade(){
-        //quando progride o nivel incrementa a agilidade com o valor da constituicao
+        //atualiza a agilidade quando progride o nivel - incrementa a agilidade com o valor da constituicao
         habilidade[2]+=habilidade[3];
     }
 
-    public void newVida(){
-        //quando usa o ritual de cura incrementa a vida com o valor do ritual
+    public void newVidaRitualCura(){
+        //atualiza a vida quando usa o ritual de cura - incrementa a vida com o valor do ritual
         saude[0]+=saude[1];
+    }
+
+    public void newVidaDano(int danoLevado){
+        //atualiza a vida quando o agente nao desvia do ataque - decrementa a vida com o valor do dano levado
+        this.saude[0]-=danoLevado;
+    }
+
+    public void newVidaDesvio(int danoLevado){
+        //atualiza a vida quando o agente desvia do ataque - decrementa a vida com o valor do dano levado - a agilidade
+        this.saude[0]-=danoLevado-this.habilidade[2];
     }
 
     //getters
     public int getAfinidade(){
-        //retorna o valor da afinidade
+        //retorna o valor da afinidade - dano do agente
         return habilidade[0];
     }
 
     public int getAgilidade(){
-        //retorna o valor da agilidade
+        //retorna o valor da agilidade - defesa do agente (redução do dano da criatura)
         return habilidade[2];
     }
 
