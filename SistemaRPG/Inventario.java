@@ -1,11 +1,13 @@
 package SistemaRPG;
 
-public class Inventario {
+import Menu.MenuInventario;
 
-    private int[] inventario = new int[3]; // {ritualDeCura, chaves, objetosAmaldicoados}
+public class Inventario extends MenuInventario{
 
-    public Inventario(int[] itens){
-        this.inventario = itens;
+    private int[] inventario; // {ritualDeCura, chaves, objetosAmaldicoados}
+
+    public Inventario(int[] qntItens){
+        this.inventario = qntItens;
     }
 
     //setters
