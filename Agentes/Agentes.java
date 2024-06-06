@@ -1,6 +1,7 @@
 package Agentes;
 
 public class Agentes {
+
     private int[] habilidade; //{afinidade, vigor, agilidade, constituicao}
     private int[] saude; //{vida, ritualCura}
 
