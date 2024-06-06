@@ -37,7 +37,7 @@ SISTEMA GERAL
 habilidades: 
    - afinidade
    - agilidade
-   - xp
+   - constituição
    - vigor
 
  ______________________________
@@ -48,9 +48,8 @@ habilidades:
 | para reduzir dano            |
 | -vigor: incrementa o dano do |
 | player                       |
-| -xp: incrementa a cada kill  |
-| e é utilizado para aprimorar |
-| as habilidades               |
+| -constituição: incrementa a  |
+| defesa do player             |
 |______________________________|
 
 saude: 
@@ -182,22 +181,3 @@ ao chegar clicar nos objetos de interação aparece mensagens:
 
    - botão fixo na tela que ao clicar mostra botões com as possibilidades de progressão. Quando clica para progredir, aparece mensagem falando se tem xp suficiente ou não (se tiver só aparece que progrediu de nível)
    - 3xp para aumentar força, 2xp para aumentar defesa
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
