@@ -1,6 +1,7 @@
 package Criaturas;
 
 public class Criaturas {
+    
     private int[] habilidades; //afinidade, agilidade
     private int vida;
 
