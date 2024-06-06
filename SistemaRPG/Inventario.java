@@ -1,4 +1,4 @@
-package SistemaPRG;
+package SistemaRPG;
 
 public class Inventario {
 
