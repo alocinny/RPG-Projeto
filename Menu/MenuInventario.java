@@ -10,7 +10,7 @@ public class MenuInventario extends JFrame{
 
     private int[] sizeWin = {600, 600};
     private JFrame frame;
-    private  JPanel jPanel;
+    private JPanel jPanel;
     private JLabel jLabel;
     private JLabel jLabelRituaLcura;
     private JLabel jLabelChaves;
