@@ -43,4 +43,8 @@ public class Criaturas {
         //retorna true se a vida for maior que 0
         return vida > 0;
     }
+
+    public int[] getHabilidades(){
+        return habilidades;
+    }
 }
