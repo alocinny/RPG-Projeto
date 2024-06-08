@@ -72,8 +72,6 @@ public class MenuProgressaoNivel extends JFrame {
             }
         });
         jButtonAgilidade.setBounds(20,90,250,40);
-
-        //atualiza a interface
         
         //adiciona os labels no panel
         jPanel.add(jLabel);
