@@ -57,4 +57,12 @@ public class Agentes {
         //retorna true se a vida do agente for maior que 0
         return saude[0]>0;
     }
+    
+    public int[] getHabilidades(){
+        return habilidade;
+    }
+
+    public int[] getSaude(){
+        return saude;
+    }
 }
