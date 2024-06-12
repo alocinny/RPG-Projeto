@@ -149,7 +149,7 @@ total de criaturas no mapa: 5
 
 total de casas no mapa: 10
 total de poções de cura: 8
-total de objetos amaldiçoados: 6
+total de objetos amaldiçoados: 4
 total de chaves: 5
 total de cartas: 3 (indicam o plano dos escriptas em enfraquecer a membrana do vilarejo)
 
