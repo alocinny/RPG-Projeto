@@ -8,13 +8,13 @@
 ataqueSimples = xd4 + vigor
 defesa = yd4 + atletismo
 
-RitualDescarnar( gasta 4 pt ocultismo ) = ataqueSimples + 2d10
+RitualDescarnar( gasta 4 pt ocultismo ) = ataqueSimples + 2d10 (+5 se gastar 7 pontos de ocultismo)
 
-RitualInfligirDoença( gasta 6 pt ocultismo ) = ataqueSimples + 3d10
+RitualInfligirDoença = ataqueSimples + 1d10 (+5 se gastar 5 pontos de ocultismo)
 
-RitualDeDestruiçãotemporal( gasta 2 pt ocultismo ) = ataqueSimples + 1d10
+RitualDeDestruiçãotemporal = ataqueSimples + 1d10
 
-RitualDeBençãoMaldita( gasta 1 pt Ocultismo ) = ataqueSimples + 2d4
+RitualDeBençãoMaldita = ataqueSimples + 3d4 (+5 se gastar 2 pontos de ocultismo)
 
 
 | COMBATE | - criaturas
