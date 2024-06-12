@@ -1,50 +1,29 @@
-RITUAIS PARA OS OCULTISTAS DA ORDEM: 
+| COMBATE | - agentes
 
-Ritual de Descarnar ---------------
+- rolagem de dados
+- dados utilizados: d4 e d10
+- x: força
+- y: agilidade
 
-	elemento: sangue
-	conjuração: derramar sangue humano sob um livro com simbolo de sangue (objeto amaldiçoado) (criatura precisa fazer teste de constituição)
-	efeito:
-		indouto: a pele do alvo é dilacerada, dando 1d10 de dano
-		discente: a pele do alvo é dilacerada, dando 2d10+2 de dano
+ataqueSimples = xd4 + vigor
+defesa = yd4 + atletismo
 
-Ritual de Infligir Doença ------------
-	
-	elemento: sangue
-	conjuração: ter em mãos cinzas de animais
-	efeito: vítima contrai ou acelera algum tipo de doença dando 1d8 de dano 
+RitualDescarnar( gasta 4 pt ocultismo ) = ataqueSimples + 2d10
 
-Ritual de Destruição Temporal -----------
-	elemento: morte
-	conjuração: consumir porção de cinzas
-	Efeito: ao gastar 5 pontos de Ocultismo, destrói temporáriamente o alvo dando 2d8 de dano direto de morte
+RitualInfligirDoença( gasta 6 pt ocultismo ) = ataqueSimples + 3d10
 
-Ritual de Bênção Maldita -----------------
-	elemento: conhecimento
-	conjuração: ter em mãos um objeto técnológico
-	efeito: ao gastar 5 pontos de Ocultismo rola 1d20 de de dano
-	
+RitualDeDestruiçãotemporal( gasta 2 pt ocultismo ) = ataqueSimples + 1d10
+
+RitualDeBençãoMaldita( gasta 1 pt Ocultismo ) = ataqueSimples + 2d4
 
 
-OBJETOS: 
-4 POTES DE CINZAS
-1 LIVRO
-1 CELULAR AMALDIÇOADO
+| COMBATE | - criaturas
 
-ATRIBUTOS: 
-- pontos de ocultismo (padrão 15)
-- Agilidade 
-- força 
+- rolagem de dados
+- dados utilizados: d10
+- x: força
+- y: agilidade
 
-dado padrão: d20
+defesa = yd10 
 
-danoAtaque = d20 + força //quando vai atacar
-danoDefesa = danoLevado - (d20 + agilidade) //quando vai desviar
-
-
-
-
-
-
-
-
+ataque = xd10
