@@ -35,21 +35,22 @@ SISTEMA GERAL
 | AGENTES | -> classe pai
 
 habilidades: 
-   - afinidade
+   - força
    - agilidade
-   - constituição
    - vigor
-
+   - atletismo
+   - pontos de ocultismo
  ______________________________
 | especificando as habilidades |
 |                              |
-| -afinidade: dano do player   |
+| -força: dano do player       |
 | -agilidade: desvio do player |
 | para reduzir dano            |
-| -vigor: incrementa o dano do |
-| player                       |
-| -constituição: incrementa a  |
-| defesa do player             |
+| -vigor: soma no ataque       |
+| -atletismo: soma na defesa   |
+| -pontos de ocultismo: gastar |
+| pontos para aumentar dano do |
+| ritual                       |
 |______________________________|
 
 saude: 
@@ -61,12 +62,11 @@ saude:
 habilidades:
    - afinidade
    - agilidade 
-
  ______________________________
 |            IDEIA             |
 |                              |
 | utilizar a função random     |
-| para decidir qual habilidade |
+| para decidir qual ataque     |
 | a criatura vai utilizar no   |
 | turno                        |
 |______________________________|
@@ -74,35 +74,38 @@ habilidades:
 saude: 
    - vida total
 
-| COMBATENTE | -> classe filha de agentes
+| OCULTISTA DO SANGUE | -> classe filha de agentes
 
 habilidades:
-   - afinidade: 10
-   - agilidade: 6
-   - vigor: 5
-   - xp: 0
+   - força: 3
+   - agilidade: 4
+   - atletismo: 6
+   - vigor: 5 
+   - pt ocultismo: 20
 
 saude: 
    - vida total: 110
 
-| OCULTISTA | -> classe filha de agentes
+| OCULTISTA DO MEDO | -> classe filha de agentes
 
 habilidades:
-   - afinidade: 16
-   - agilidade: 4
-   - vigor: 3
-   - xp: 0
+   - força: 4
+   - agilidade: 3
+   - vigor: 6
+   - atletismo: 5
+   - pt ocultismo: 20
 
 saude: 
-   -vida total: 85
+   -vida total: 100
 
-| ATIRADOR | -> classe filha de agentes
+| OCULTISTA DO CONHECIMENTO | -> classe filha de agentes
 
 habilidades:  
-   - afinidade: 15
-   - agilidade: 7
-   - vigor: 4
-   - xp: 0
+   - força: 5
+   - agilidade: 2
+   - vigor: 8
+   - atletismo: 4
+   - pt ocultismo: 20
 
 saude: 
    - vida total: 90
@@ -110,8 +113,8 @@ saude:
 | ZUMBI DE SANGUE | -> classe filha de criaturas
 
 habilidades: 
-   - afinidade: 7
-   - agilidade: 4
+   - afinidade: 2
+   - agilidade: 5
 
 saude: 
    - vida total: 95
@@ -119,8 +122,8 @@ saude:
 | ABERRACAO | -> classe filha de criaturas
 
 habilidades: 
-   - afinidade: 15
-   - agilidade: 5
+   - afinidade: 3
+   - agilidade: 4
 
 saude: 
    - vida total: 80
@@ -128,8 +131,8 @@ saude:
 | MARIONETE (BOSS) | -> classe filha de criaturas 
 
 habilidades: 
-   - afinidade: 20
-   - agilidade: 5
+   - afinidade: 4
+   - agilidade: 6
 
 saude: 
    - vida total: 100
@@ -170,14 +173,13 @@ ao chegar clicar nos objetos de interação aparece mensagens:
    - cartas: 
 	abre uma janela pequena com o conteúdo da carta
 
-| COMBATE | 
+| COMBATE | -> olhar imagem e arquivo separado
  
-   - janela de combate com dois botões, atacar e fugir
-   - será gerado um valor aleatório pela função random que decidirá se a criatura irá defender ou atacar
+   - janela de combate com dois botões, atacar, desviar, inventário.
    - a cada turno atualiza a vida dos personagems e mostra a narração (ex: ocultista ataca zumbi)
-   - a cada combate ganha 1 de xp (exceto o boss)
+   - a cada combate, se ganhar ganha 2 de xp (exceto o boss)
 
 | PROGRESSÃO DE NÍVEL |
 
    - botão fixo na tela que ao clicar mostra botões com as possibilidades de progressão. Quando clica para progredir, aparece mensagem falando se tem xp suficiente ou não (se tiver só aparece que progrediu de nível)
-   - 3xp para aumentar força, 2xp para aumentar defesa
+   - 3xp para aumentar vigor, 2xp para aumentar atletismo
