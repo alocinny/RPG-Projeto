@@ -1,0 +1,50 @@
+RITUAIS PARA OS OCULTISTAS DA ORDEM: 
+
+Ritual de Descarnar ---------------
+
+	elemento: sangue
+	conjuração: derramar sangue humano sob um livro com simbolo de sangue (objeto amaldiçoado) (criatura precisa fazer teste de constituição)
+	efeito:
+		indouto: a pele do alvo é dilacerada, dando 1d10 de dano
+		discente: a pele do alvo é dilacerada, dando 2d10+2 de dano
+
+Ritual de Infligir Doença ------------
+	
+	elemento: sangue
+	conjuração: ter em mãos cinzas de animais
+	efeito: vítima contrai ou acelera algum tipo de doença dando 1d8 de dano 
+
+Ritual de Destruição Temporal -----------
+	elemento: morte
+	conjuração: consumir porção de cinzas
+	Efeito: ao gastar 5 pontos de Ocultismo, destrói temporáriamente o alvo dando 2d8 de dano direto de morte
+
+Ritual de Bênção Maldita -----------------
+	elemento: conhecimento
+	conjuração: ter em mãos um objeto técnológico
+	efeito: ao gastar 5 pontos de Ocultismo rola 1d20 de de dano
+	
+
+
+OBJETOS: 
+4 POTES DE CINZAS
+1 LIVRO
+1 CELULAR AMALDIÇOADO
+
+ATRIBUTOS: 
+- pontos de ocultismo (padrão 15)
+- Agilidade 
+- força 
+
+dado padrão: d20
+
+danoAtaque = d20 + força //quando vai atacar
+danoDefesa = danoLevado - (d20 + agilidade) //quando vai desviar
+
+
+
+
+
+
+
+
