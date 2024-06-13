@@ -2,7 +2,7 @@ package Agentes;
 
 public class Agentes {
 
-    private int[] habilidade; //{afinidade, vigor, agilidade, constituicao}
+    private int[] habilidade; //{força, agilidade, vigor, atletismo, ptOcultismo}
     private int[] saude; //{vida, ritualCura}
 
     //construtor
@@ -12,14 +12,20 @@ public class Agentes {
     }
 
     //setters
-    public void newAfinidade(){
-        //atualiza o vigor quando progride o nivel - incrementa a habilidade com o valor do vigor
-        habilidade[0]+=habilidade[1];
+    public void newForça(){
+        //atualiza a força quando progride o nível
+        //verifica se a força é menor ou igual a 10
+        if(habilidade[0]<=10){
+            habilidade[0]+=1;
+        }
     }
 
     public void newAgilidade(){
-        //atualiza a agilidade quando progride o nivel - incrementa a agilidade com o valor da constituicao
-        habilidade[2]+=habilidade[3];
+        //atualiza a agilidade quando progride o nivel 
+        //verifica se a agilidade é menor ou igual a 10
+        if(habilidade[1]<=10){
+            habilidade[1]+=1;
+        }
     }
 
     public void newVidaRitualCura(){
@@ -27,30 +33,41 @@ public class Agentes {
         saude[0]+=saude[1];
     }
 
-    public void newVidaDano(int danoLevado){
-        //atualiza a vida quando o agente nao desvia do ataque - decrementa a vida com o valor do dano levado
-        this.saude[0]-=danoLevado;
-    }
+    public void newVida(int danoLevado, int defesa){
+        //atualiza vida após ataque da da criatura
+        if(danoLevado-defesa>0){
 
-    public void newVidaDesvio(int danoLevado){
-        //atualiza a vida quando o agente desvia do ataque - decrementa a vida com o valor do dano levado - a agilidade
-        this.saude[0]-=danoLevado-this.habilidade[2];
+            this.saude[0]-=danoLevado-defesa;
+        }
     }
 
     //getters
-    public int getAfinidade(){
-        //retorna o valor da afinidade - dano do agente
+    public int getForca(){
         return habilidade[0];
     }
 
     public int getAgilidade(){
-        //retorna o valor da agilidade - defesa do agente (redução do dano da criatura)
+        return habilidade[1];
+    }
+
+    public int getvigor(){
         return habilidade[2];
+    }
+
+    public int getAtletismo(){
+        return habilidade[3];
+    }
+
+    public int getPtOcultismo(){
+        return habilidade[4];
     }
 
     public int getVida(){
         //retorna o valor da vida
-        return saude[0];
+        if(saude[0]>=0){
+            return saude[0];
+        }
+        return 0;
     }
 
     public boolean vivo(){
