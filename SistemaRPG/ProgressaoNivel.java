@@ -18,10 +18,10 @@ public class ProgressaoNivel extends Agentes{
         xp+=2;
     }
 
-    public void newXpDecrementaAfinidade(){
+    public void newXpDecrementaforca(){
         //decrementa o valor para progredir afinidade
         xp-=3;
-        newAfinidade();
+        newForça();
     }
 
     public void newXpDecrementaAgilidade(){
