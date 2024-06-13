@@ -38,7 +38,7 @@ public class MenuProgressaoNivel extends JFrame {
         jLabelAgilidade.setBounds(50,50,200,30);
 
         //mostra na janela o vigor total do agente
-        jLabelAfinidade = new JLabel("Afinidade: " + agentes.getAfinidade());
+        jLabelAfinidade = new JLabel("força: " + agentes.getForca());
         jLabelAfinidade.setBounds(50,50,200,30);
 
         //mostra na janela o xp total do agente
@@ -51,8 +51,8 @@ public class MenuProgressaoNivel extends JFrame {
                 if(progressaoNivel.getXp()<3){
                     JOptionPane.showMessageDialog(null, mensagem);
                 } else {
-                    progressaoNivel.newXpDecrementaAfinidade();
-                    jLabelAfinidade.setText("Afinidade: " + agentes.getAfinidade());
+                    progressaoNivel.newXpDecrementaforca();
+                    jLabelAfinidade.setText("Afinidade: " + agentes.getForca());
                     jLabelXp.setText("Xp: " + progressaoNivel.getXp());
                 }
             }
