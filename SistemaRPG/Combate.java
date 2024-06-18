@@ -68,7 +68,7 @@ public class Combate {
 
         setD10(criatura.getForca());
         setSoma(d10);
-        ataqueSimples = (getSumDado()/2) + 10;
+        ataqueSimples = getSumDado() + 5;
     }
 
     public void ritualDescarnar(){
@@ -95,7 +95,7 @@ public class Combate {
 
         setD10(4);
         setSoma(d10);
-        ritual = getAtaqueSimples() + getSumDado();
+        ritual = getAtaqueSimples() + (getSumDado()/2) + 10;
     }
 
     //getters
@@ -129,84 +129,89 @@ public class Combate {
     }
 
     public void combate(Agentes agente, Criaturas criatura, int escolha){
+        if(agente.vivo()){
 
-        switch (escolha) {
-             
-            case 1:
-                ataqueSimples(agente);
-
-                System.out.println("ocultista conjura um ritual simples, dando: " + getAtaqueSimples() + " de dano");
-
-                setDefesa(criatura);
-                criatura.newVidaDano(getAtaqueSimples(), getDefesa());
-
-                System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
-
-                break;
-            case 2:
-
-                ataqueSimples(agente);
-                ritualDescarnar();
-
-                System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
-
-                setDefesa(criatura);
-                criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
-
-                System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
-
-                break;
-            case 3:
-
-                ataqueSimples(agente);
-                ritualInfligirDoença();
-
-                System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
-
-                setDefesa(criatura);
-                criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
-
-                System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
-
-                break;
-            case 4:
-                ataqueSimples(agente);
-                ritualDestruicaoTemporal();
-
-                System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
-
-                setDefesa(criatura);
-                criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
-
-                System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
-            
-                break;
-            case 5: 
-                ataqueSimples(agente);
-                ritualDeBençãoMaldita();
-
-                System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
-
-                setDefesa(criatura);
-                criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
-
-                System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
-
-                break;
-            default:
-                break;
+            switch (escolha) {
+                 
+                case 1:
+                    ataqueSimples(agente);
+    
+                    System.out.println("ocultista conjura um ritual simples, dando: " + getAtaqueSimples() + " de dano");
+    
+                    setDefesa(criatura);
+                    criatura.newVidaDano(getAtaqueSimples(), getDefesa());
+    
+                    System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
+    
+                    break;
+                case 2:
+    
+                    ataqueSimples(agente);
+                    ritualDescarnar();
+    
+                    System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
+    
+                    setDefesa(criatura);
+                    criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
+    
+                    System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
+    
+                    break;
+                case 3:
+    
+                    ataqueSimples(agente);
+                    ritualInfligirDoença();
+    
+                    System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
+    
+                    setDefesa(criatura);
+                    criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
+    
+                    System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
+    
+                    break;
+                case 4:
+                    ataqueSimples(agente);
+                    ritualDestruicaoTemporal();
+    
+                    System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
+    
+                    setDefesa(criatura);
+                    criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
+    
+                    System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
+                
+                    break;
+                case 5: 
+                    ataqueSimples(agente);
+                    ritualDeBençãoMaldita();
+    
+                    System.out.println("ocultista conjura o ritual de descarnar, dando: " + (getAtaqueSimples()+getRitual()) + " de dano");
+    
+                    setDefesa(criatura);
+                    criatura.newVidaDano((getAtaqueSimples()+getRitual()), getDefesa());
+    
+                    System.out.println("criatura desvia do ataque, reduzindo em " + getDefesa() + " o dano do ocultista");
+    
+                    break;
+                default:
+                    break;
+            }
         }
 
-        System.out.println("\n\n");
-
-        ataqueSimples(criatura);
-
-        System.out.println("a criatura ataca o ocultista, dando " + getAtaqueSimples() + " de dano");
-
-        setdefesa(agente);
-        agente.newVida(getAtaqueSimples(), getDefesa());
-
-        System.out.println("o ocultista desvia do ataque, reduzindo em " + getDefesa() + " o dano da criatura");
+        if(criatura.vivo()){
+            
+            System.out.println("\n\n");
+    
+            ataqueSimples(criatura);
+    
+            System.out.println("a criatura ataca o ocultista, dando " + getAtaqueSimples() + " de dano");
+    
+            setdefesa(agente);
+            agente.newVida(getAtaqueSimples(), getDefesa());
+    
+            System.out.println("o ocultista desvia do ataque, reduzindo em " + getDefesa() + " o dano da criatura");
+        }
 
         System.out.println("vida ocultista: " + agente.getVida());
         System.out.println("vida da criatura: " + criatura.getVida());
