@@ -12,9 +12,7 @@ public class MenuInventario extends JFrame{
     private JFrame frame;
     private JPanel jPanel;
     private JLabel jLabel;
-    private JLabel jLabelRituaLcura;
-    private JLabel jLabelChaves;
-    private JLabel jLabelObjAmaldicoado;
+    private JLabel jLabelItens;
 
     public void winMenuInventario(Inventario inventario){
 
@@ -22,20 +20,11 @@ public class MenuInventario extends JFrame{
         jLabel = new JLabel();
         jPanel = new JPanel();
 
-        jLabelRituaLcura = new JLabel("Ritual de cura: " + inventario.getRitualCura());
-        jLabelRituaLcura.setBounds(50,50,200,30);
-
-        jLabelChaves = new JLabel("Chaves: " + inventario.getChave());
-        jLabelChaves.setBounds(50,50,200,30);
-
-        jLabelObjAmaldicoado = new JLabel();
-        jLabelObjAmaldicoado.setText("Objetos amaldiçoados: " + inventario.getObjAmaldicoado());
-        jLabelObjAmaldicoado.setBounds(50,50,200,30);
+        jLabelItens = new JLabel("Ritual de cura: " + inventario.getItens());
+        jLabelItens.setBounds(50,50,200,30);
 
         jPanel.add(jLabel);
-        jPanel.add(jLabelRituaLcura);
-        jPanel.add(jLabelChaves);
-        jPanel.add(jLabelObjAmaldicoado);
+        jPanel.add(jLabelItens);
 
         frame.add(jPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
