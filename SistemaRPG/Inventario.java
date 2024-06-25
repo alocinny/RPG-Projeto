@@ -1,44 +1,29 @@
 package SistemaRPG;
 
-import Menu.MenuInventario;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Inventario extends MenuInventario{
+public class Inventario {
 
-    private int[] inventario; // {ritualDeCura, chaves, objetosAmaldicoados}
+    private List<Item> itens;
 
-    public Inventario(int[] qntItens){
-        this.inventario = qntItens;
+    public Inventario(){
+        itens = new ArrayList<>();
     }
 
-    //setters
-    public void newRitualCura(){
-        //incrementa a quantidade de ritual de cura
-        inventario[0]+=1;
-    }
-
-    public void newChave(){
-        //incrementa a quantidade de chaves que o player tem
-        inventario[1]+=1;
+    public void addItem(Item item){
+        itens.add(item);
     }
     
-    public void newObjAmaldicoado(){
-        //incrementa a quantidade de objetos amaldicoados que o player tem
-        inventario[2]+=1;
+    public void removeItem(Item item){
+        itens.remove(item);
     }
 
-    //getters
-    public int getRitualCura(){
-        //retorna a quantidade de ritual de cura que o player tem
-        return inventario[0];
+    public boolean temItem(Item item){
+        return itens.contains(item);
     }
 
-    public int getChave(){
-        //retorna a quantidade de chaves que o player tem
-        return inventario[1];
-    }
-
-    public int getObjAmaldicoado(){
-        //retorna a quantidade de objetos amaldiçoados que o player tem
-        return inventario[2];
+    public List<Item> getItens(){
+        return itens;
     }
 }
