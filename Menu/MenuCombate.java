@@ -1,5 +1,6 @@
 package Menu;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,9 +11,9 @@ import javax.swing.JPanel;
 
 import Criaturas.Criaturas;
 import Agentes.Agentes;
+import SistemaRPG.Combate;
 
 public class MenuCombate extends JFrame{
-
     private int[] sizeWin = {600, 600};
     private JFrame frame;
     private JPanel jPanel;
@@ -20,59 +21,136 @@ public class MenuCombate extends JFrame{
     private JLabel jLabelVidaAgente;
     private JLabel jLabelVidaCriatura;
     private JLabel jLabelScript;
+    //private JLabel jLabelDados;
     private JButton jButtonAtacar;
-    private JButton jButtonDefender;
+    private JButton jButtonDescarnar;
+    private JButton jButtonInfligirDoenca;
+    private JButton jButtonDestruicaotemporal;
+    private JButton jButtonBencaoMaldita;
 
-    public void winCombate(Agentes agentes, Criaturas criaturas){
+    public void winCombate(Agentes agentes, Criaturas criaturas, Combate combate){
 
-        frame = new JFrame("Progressão de nível");
+        frame = new JFrame("Combate");
+
         jLabel = new JLabel();
+
         jPanel = new JPanel();
-        jButtonAtacar = new JButton("Atacar");
-        jButtonDefender = new JButton("Defender");
-        
-        //mostra o script na janela
+
+        jButtonAtacar = new JButton("Ritual Simples");
+        jButtonDescarnar = new JButton("Ritual de Descarnar");
+        jButtonInfligirDoenca = new JButton("Ritual de Infligir Doença");
+        jButtonDestruicaotemporal = new JButton("Ritual de Destruição Temporal");
+        jButtonBencaoMaldita = new JButton("Ritual de Benção Maldita");
+
+        //mostra informações na janela
         jLabelScript = new JLabel("combate iniciado");
-        jLabelScript.setBounds(50,50,200,50);
+        jLabelScript.setBounds(50,300,200,50);
+
+        //mostrar os dados quando for fazer a GUI
+        //jLabelDados = new JLabel("seus dados:");
+        //jLabelDados.setBounds(50,350,200,50);
 
         //mostra na janela a vida total do agente
         jLabelVidaAgente = new JLabel("Vida do agente: " + agentes.getVida());
-        jLabelVidaAgente.setBounds(50,50,200,50);
+        jLabelVidaAgente.setBounds(50,350,200,50);
 
         //mostra na janela a vida total da criatura
         jLabelVidaCriatura = new JLabel("vida da criatura: " + criaturas.getVida());
-        jLabelVidaCriatura.setBounds(50,50,200,50);
+        jLabelVidaCriatura.setBounds(50,380,200,50);
 
-        //mostra botao de atacar na janela
+        //mostra botao de ritual simples na janela
         jButtonAtacar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                
-            }
-        });
-        jButtonAtacar.setBounds(20,90,250,40);
 
-        //mostra botao de defender na janela
-        jButtonDefender.addActionListener(new ActionListener() {
+                combate.combate(agentes, criaturas, 1);
+
+                //atualiza vida na tela
+                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+            }
+        });
+        jButtonAtacar.setBounds(20,40,250,40);
+
+        //mostra botao do ritual de descarnar na janela
+        jButtonDescarnar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+
+                combate.combate(agentes, criaturas, 2);
+
+                //atualiza vida na tela
+                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+            }
+        });
+        jButtonDescarnar.setBounds(20,90,250,40);
+
+        //mostra o botao do ritual de infligir doença na janela
+        jButtonInfligirDoenca.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+
+                combate.combate(agentes, criaturas, 3);
+
+                //atualiza vida na tela
+                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+
+            }
+        });
+        jButtonInfligirDoenca.setBounds(20, 140, 250, 40);
+
+        //mostra o botão do ritual de destruição temporal
+        jButtonDestruicaotemporal.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+
+                combate.combate(agentes, criaturas, 4);
+
+                //atualiza vida na tela
+                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+
+            }
+        });
+        jButtonDestruicaotemporal.setBounds(20,190,250,40);
+
+        //mostra o botão do ritual de benção maldita
+        jButtonBencaoMaldita.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+
+                combate.combate(agentes, criaturas, 5);
+                
+                //atualiza vida na tela
+                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
                 
             }
         });
-        jButtonDefender.setBounds(20,40,250,40);
+        jButtonBencaoMaldita.setBounds(20,240,250,40);
 
         //adiciona os labels no panel
+        jPanel.setVisible(true);
         jPanel.add(jLabel);
-        jPanel.add(jLabelVidaAgente);
-        jPanel.add(jLabelVidaCriatura);
-        jPanel.add(jLabelScript);
 
+        //bug n mostra panel
+        //jPanel.add(jLabelScript);
+        //jPanel.add(jLabelVidaAgente);
+        //jPanel.add(jLabelVidaCriatura);
+        
+        frame.add(jLabelScript);
+        frame.add(jLabelVidaAgente);
+        frame.add(jLabelVidaCriatura);
         frame.add(jButtonAtacar);
-        frame.add(jButtonDefender);
-
+        frame.add(jButtonDescarnar);
+        frame.add(jButtonInfligirDoenca);
+        frame.add(jButtonDestruicaotemporal);
+        frame.add(jButtonBencaoMaldita);
+        
         //configurações da janela
+        //frame.add(jLabelDados); -> mostrar dados (GUI)
         frame.add(jPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(600, 200, sizeWin[0], sizeWin[1]);
-        frame.setVisible(true);
+        frame.setLayout(new BorderLayout(10,10));
         frame.setLayout(null);
+        frame.setVisible(true);
     }
 }
