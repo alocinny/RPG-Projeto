@@ -87,9 +87,4 @@ public class Movimentacao extends JFrame implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {}
-
-    // Método main
-    public static void main(String[] args) {
-        new Movimentacao();
-    }
 }

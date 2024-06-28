@@ -56,18 +56,5 @@ import java.awt.Graphics;
             g.fillRect(1110, 600, 150, 150);
 
             //modificar cor do desenho deve ser colocada antes do proprio desenho
-           
-            
-           
-
         }
-
-        public static void main(String[]args){
-            //instanciando classe
-            new Mapa();
-        }
-
-
-
-    }
-
+}
