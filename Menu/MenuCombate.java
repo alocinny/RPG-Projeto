@@ -12,6 +12,17 @@ import javax.swing.JPanel;
 import Criaturas.Criaturas;
 import Agentes.Agentes;
 import SistemaRPG.Combate;
+import SistemaRPG.Inventario;
+
+//mostrar os dados quando for fazer a GUI
+    //private JLabel jLabelDados;
+    //jLabelDados = new JLabel("seus dados:");
+    //jLabelDados.setBounds(50,350,200,50);
+    //frame.add(jLabelDados); -> mostrar dados (GUI)
+    //bug n mostra panel
+    //jPanel.add(jLabelScript);
+    //jPanel.add(jLabelVidaAgente);
+    //jPanel.add(jLabelVidaCriatura);
 
 public class MenuCombate extends JFrame{
     private int[] sizeWin = {600, 600};
@@ -21,14 +32,16 @@ public class MenuCombate extends JFrame{
     private JLabel jLabelVidaAgente;
     private JLabel jLabelVidaCriatura;
     private JLabel jLabelScript;
-    //private JLabel jLabelDados;
     private JButton jButtonAtacar;
     private JButton jButtonDescarnar;
     private JButton jButtonInfligirDoenca;
     private JButton jButtonDestruicaotemporal;
     private JButton jButtonBencaoMaldita;
+    private JButton jButtonInventario;
 
-    public void winCombate(Agentes agentes, Criaturas criaturas, Combate combate){
+    private JFrame inventario;
+
+    public void winCombate(Agentes agentes, Criaturas criaturas, Combate combate, Inventario inventario){
 
         frame = new JFrame("Combate");
 
@@ -41,14 +54,11 @@ public class MenuCombate extends JFrame{
         jButtonInfligirDoenca = new JButton("Ritual de Infligir Doença");
         jButtonDestruicaotemporal = new JButton("Ritual de Destruição Temporal");
         jButtonBencaoMaldita = new JButton("Ritual de Benção Maldita");
+        jButtonInventario = new JButton("Inventário");
 
         //mostra informações na janela
         jLabelScript = new JLabel("combate iniciado");
-        jLabelScript.setBounds(50,300,200,50);
-
-        //mostrar os dados quando for fazer a GUI
-        //jLabelDados = new JLabel("seus dados:");
-        //jLabelDados.setBounds(50,350,200,50);
+        jLabelScript.setBounds(50,330,200,50);
 
         //mostra na janela a vida total do agente
         jLabelVidaAgente = new JLabel("Vida do agente: " + agentes.getVida());
@@ -126,14 +136,17 @@ public class MenuCombate extends JFrame{
         });
         jButtonBencaoMaldita.setBounds(20,240,250,40);
 
+        jButtonInventario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+
+                InventarioMenu(inventario);
+            }
+        });
+        jButtonInventario.setBounds(20,290,250,40);
+
         //adiciona os labels no panel
         jPanel.setVisible(true);
         jPanel.add(jLabel);
-
-        //bug n mostra panel
-        //jPanel.add(jLabelScript);
-        //jPanel.add(jLabelVidaAgente);
-        //jPanel.add(jLabelVidaCriatura);
         
         frame.add(jLabelScript);
         frame.add(jLabelVidaAgente);
@@ -143,14 +156,41 @@ public class MenuCombate extends JFrame{
         frame.add(jButtonInfligirDoenca);
         frame.add(jButtonDestruicaotemporal);
         frame.add(jButtonBencaoMaldita);
+        frame.add(jButtonInventario);
         
         //configurações da janela
-        //frame.add(jLabelDados); -> mostrar dados (GUI)
         frame.add(jPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(600, 200, sizeWin[0], sizeWin[1]);
         frame.setLayout(new BorderLayout(10,10));
         frame.setLayout(null);
         frame.setVisible(true);
+    }
+
+    public void InventarioMenu(Inventario inventary){
+        if(inventario == null){
+            inventario = new JFrame("inventário");
+            inventario.setSize(300,300);
+            inventario.setLocationRelativeTo(this);
+            
+            JLabel jLabelItens = new JLabel("Ritual de cura: " + inventary.getItens());
+            jLabelItens.setBounds(20,10,200,30);
+
+            inventario.add(jLabelItens);
+            inventario.setLayout(new BorderLayout(10,10));
+
+            inventario.addWindowListener(new java.awt.event.WindowAdapter(){
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                    inventario = null;
+                }
+            });
+
+            inventario.setVisible(true);
+
+        } else {
+            inventario.dispose();
+            inventario = null;
+        }
     }
 }
