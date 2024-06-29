@@ -1,17 +1,36 @@
 //teste
 
+import java.util.Scanner;
+
+import Agentes.Agentes;
 import Agentes.OcultistaConhecimento;
-import Criaturas.Marionete;
-import Menu.MenuCombate;
+import Mapa.Mapa;
 
 public class Main {
 
     public static void main(String[] args) {
         
+        Mapa mapa = new Mapa(30,30);
         OcultistaConhecimento ocultistaConhecimento = new OcultistaConhecimento();
-        Marionete marionete = new Marionete();
-        MenuCombate menuCombate = new MenuCombate();
+        Agentes agente = new Agentes(ocultistaConhecimento.getHabilidades(), ocultistaConhecimento.getSaude());
+        
+        mapa.setAgente(agente);
+    
+        Scanner scanner = new Scanner(System.in);
+        
+        while(true){
 
-        menuCombate.winCombate(ocultistaConhecimento, marionete);
+        mapa.drawMapa();
+    
+        char direction = scanner.next().charAt(0);
+
+        if(direction == 'q'){
+            break;
+        }
+
+        agente.move(direction,mapa);
+        }
+        
+        scanner.close();
     }
 }
