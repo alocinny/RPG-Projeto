@@ -1,14 +1,63 @@
 package Agentes;
 
+import Mapa.Mapa;
+import Mapa.MapaObjeto;
+import SistemaRPG.Inventario;
+import SistemaRPG.Item;
+
 public class Agentes {
+
+    private Inventario inventario = new Inventario();
+    private Item item;
 
     private int[] habilidade; //{força, agilidade, vigor, atletismo, ptOcultismo}
     private int[] saude; //{vida, ritualCura}
+
+    private int[] position = {0,0}; //x,y
 
     //construtor
     public Agentes(int[] hability, int[] health){
         this.habilidade = hability;
         this.saude = health;
+    }
+
+    //movimentação
+    public void move(char direction, Mapa mapa){
+        int newX = position[0];
+        int newY = position[1];
+
+        switch(direction){
+            case 'w': 
+                newY--;
+            break;
+            case 's': 
+                newY++;
+            break;
+            case 'a': 
+                newX--;
+            break;
+            case 'd': 
+                newX++;
+            break;
+        }
+
+        if(mapa.isValidPosition(newX, newY)){
+            position[0] = newX;
+            position[1] = newY;
+
+            CheckOBJ(mapa);
+        }
+    }
+
+    private void CheckOBJ(Mapa mapa){
+        MapaObjeto mapaObjeto = mapa.getObjectAt(position[0], position[1]);
+        if(mapaObjeto != null){
+            item = new Item(mapaObjeto.getNomeObj());
+            inventario.addItem(item);
+            mapa.removeObjAt(position[0], position[1]);
+            System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
+            System.out.println("objetos coletados: " + inventario.getItens());
+        }
     }
 
     //setters
@@ -81,5 +130,13 @@ public class Agentes {
 
     public int[] getSaude(){
         return saude;
+    }
+
+    public int getX(){
+        return position[0];
+    }
+
+    public int getY(){
+        return position[1];
     }
 }
