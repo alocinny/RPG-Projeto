@@ -39,9 +39,12 @@ public class MenuCombate extends JFrame{
     private JButton jButtonBencaoMaldita;
     private JButton jButtonInventario;
 
+    private Inventario inventary = new Inventario();
+    private Combate combate = new Combate();
+
     private JFrame inventario;
 
-    public void winCombate(Agentes agentes, Criaturas criaturas, Combate combate, Inventario inventario){
+    public void winCombate(Agentes agentes, Criaturas criaturas){
 
         frame = new JFrame("Combate");
 
@@ -139,7 +142,7 @@ public class MenuCombate extends JFrame{
         jButtonInventario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-                InventarioMenu(inventario);
+                InventarioMenu();
             }
         });
         jButtonInventario.setBounds(20,290,250,40);
@@ -167,7 +170,7 @@ public class MenuCombate extends JFrame{
         frame.setVisible(true);
     }
 
-    public void InventarioMenu(Inventario inventary){
+    public void InventarioMenu(){
         if(inventario == null){
             inventario = new JFrame("inventário");
             inventario.setSize(300,300);
