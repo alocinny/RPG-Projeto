@@ -9,6 +9,8 @@ import Mapa.Mapa;
 public class Main {
 
     public static void main(String[] args) {
+
+        //andar com w,a,s,d, pressionar 'e' para acessar inventário e 'q' para sair
         
         Mapa mapa = new Mapa(30,30);
         OcultistaConhecimento ocultistaConhecimento = new OcultistaConhecimento();
@@ -26,6 +28,10 @@ public class Main {
 
         if(direction == 'q'){
             break;
+        } 
+
+        if(direction == 'e'){
+            agente.getInventario();
         }
 
         agente.move(direction,mapa);
