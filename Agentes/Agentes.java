@@ -59,14 +59,20 @@ public class Agentes {
         MapaObjeto mapaObjeto = mapa.getObjectAt(position[0], position[1]);
         if(mapaObjeto != null){
             if(mapaObjeto.getCaracterOBJ() == 'K'){
-                //ERRO 
+                //COMBATE 
+                System.out.println("voce encontrou um inimigo! digite 1 para lutar ou 2 para fugir");
+            } else {
+                item = new Item(mapaObjeto.getNomeObj());
+                inventario.addItem(item);
+                mapa.removeObjAt(position[0], position[1]);
+                System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
+                System.out.println("objetos coletados: " + inventario.getItens());
             }
-            item = new Item(mapaObjeto.getNomeObj());
-            inventario.addItem(item);
-            mapa.removeObjAt(position[0], position[1]);
-            System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
-            System.out.println("objetos coletados: " + inventario.getItens());
         }
+    }
+
+    public void getInventario(){
+        System.out.println(inventario.getItens());
     }
 
     //setters
