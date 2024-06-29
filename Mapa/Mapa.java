@@ -30,7 +30,7 @@ public class Mapa {
         map[10][7] = new MapaObjeto('V', "chave 2");
         map[13][7] = new MapaObjeto('M', "chave 3");
         map[20][7] = new MapaObjeto('Z', "chave 4");
-        map[4][5] = new MapaObjeto('L', "livro amaldiçoado");
+        map[4][5] = new MapaObjeto('L', "inimigo");
         
     }
     public void drawMapa(){
