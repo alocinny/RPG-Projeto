@@ -1,4 +1,4 @@
-package Mapa;
+package MapaGUI;
 import javax.swing.JFrame;
 
 import java.awt.Color;

@@ -1,5 +1,4 @@
-
-package Mapa;
+package MapaGUI;
 
 import javax.swing.JFrame;
 import java.awt.Color;
@@ -7,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Movimentacao extends JFrame implements KeyListener {
+public class Movimentacao2 extends JFrame implements KeyListener {
     
     // Posição inicial do personagem
     private int personagemX = 100;
@@ -17,7 +16,7 @@ public class Movimentacao extends JFrame implements KeyListener {
     private static final int PASSO = 50;
 
     // Construtor da classe
-    public Movimentacao() {
+    public Movimentacao2() {
         // Configuração da janela
         setSize(1400, 1000);
         setLocationRelativeTo(null);
@@ -34,6 +33,7 @@ public class Movimentacao extends JFrame implements KeyListener {
     public void paint(Graphics g) {
         super.paint(g);  // Chama o método paint da superclasse JFrame
 
+        
         // Desenha o mapa
         g.setColor(Color.green);
        //metodos de desenhar um retangulo preenchido
@@ -64,27 +64,39 @@ public class Movimentacao extends JFrame implements KeyListener {
 
     // Implementação dos métodos da interface KeyListener
     @Override
-    public void keyTyped(KeyEvent e) {}
-
-    @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-
-        // Movimentação do personagem
-        if (key == KeyEvent.VK_LEFT) {
+    
+        // Obtém as dimensões da janela
+        int windowWidth = getWidth();
+        int windowHeight = getHeight();
+    
+        // Movimentação do personagem com restrição às bordas da tela
+        if (key == KeyEvent.VK_LEFT && personagemX - PASSO >= 0) {
             personagemX -= PASSO;
-        } else if (key == KeyEvent.VK_RIGHT) {
+        } else if (key == KeyEvent.VK_RIGHT && personagemX + PASSO + 30 <= windowWidth) {
             personagemX += PASSO;
-        } else if (key == KeyEvent.VK_UP) {
+        } else if (key == KeyEvent.VK_UP && personagemY - PASSO >= 1) {
             personagemY -= PASSO;
-        } else if (key == KeyEvent.VK_DOWN) {
+        } else if (key == KeyEvent.VK_DOWN && personagemY + PASSO + 40 <= windowHeight) {
             personagemY += PASSO;
         }
-
+    
         // Redesenha a tela após o movimento
         repaint();
     }
-
     @Override
     public void keyReleased(KeyEvent e) {}
+
+    // Método main
+    public static void main(String[] args) {
+        new Movimentacao2();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+    }
 }
+
