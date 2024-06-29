@@ -42,16 +42,25 @@ public class Agentes {
         }
 
         if(mapa.isValidPosition(newX, newY)){
-            position[0] = newX;
-            position[1] = newY;
+            if(mapa.isPorta(newX, newY) == true){ //ERRO -> VERIFICAR SE POSSUI A CHAVE PARA ENTRAR
+                System.out.println("voce precisa da chave para entrar nessa casa.");
+            } else if (mapa.isCasa(newX, newY)){
+                System.out.println("parede");
+            } else {
 
-            CheckOBJ(mapa);
+                position[0] = newX;
+                position[1] = newY;
+                CheckOBJ(mapa);
+            }
         }
     }
 
     private void CheckOBJ(Mapa mapa){
         MapaObjeto mapaObjeto = mapa.getObjectAt(position[0], position[1]);
         if(mapaObjeto != null){
+            if(mapaObjeto.getCaracterOBJ() == 'K'){
+                //ERRO 
+            }
             item = new Item(mapaObjeto.getNomeObj());
             inventario.addItem(item);
             mapa.removeObjAt(position[0], position[1]);
