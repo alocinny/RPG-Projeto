@@ -1,29 +1,29 @@
 package SistemaRPG;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Inventario {
 
-    private List<Item> itens;
+    private Map<String, Integer> itens;
 
     public Inventario(){
-        itens = new ArrayList<>();
+        itens = new HashMap<>();
     }
 
     public void addItem(Item item){
-        itens.add(item);
+        itens.put(item.getNomeItem(), itens.getOrDefault(item.getNomeItem(), 0) + 1);
     }
     
     public void removeItem(Item item){
-        itens.remove(item);
+        itens.remove(item.getNomeItem());
     }
 
     public boolean temItem(Item item){
-        return itens.contains(item);
+        return itens.containsKey(item.getNomeItem());
     }
 
-    public List<Item> getItens(){
+    public Map<String, Integer> getItens(){
         return itens;
     }
 }
