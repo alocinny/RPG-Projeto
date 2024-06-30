@@ -4,11 +4,13 @@ public class Criaturas {
     
     private int[] habilidades; //{força, agilidade}
     private int vida;
+    private int[] position; // x,y
 
     //construtor
-    public Criaturas(int[] hability, int life){
+    public Criaturas(int[] hability, int life, int[] position){
         this.habilidades = hability;
         this.vida = life;
+        this.position = position;
     }
 
     //setters
@@ -44,5 +46,13 @@ public class Criaturas {
 
     public int[] getHabilidades(){
         return habilidades;
+    }
+
+    public int getX(){
+        return position[0];
+    }
+
+    public int getY(){
+        return position[1];
     }
 }
