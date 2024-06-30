@@ -39,10 +39,9 @@ public class MenuCombate extends JFrame{
     private JButton jButtonBencaoMaldita;
     private JButton jButtonInventario;
 
-    private Inventario inventary = new Inventario();
+    private MenuInventario menuInventario = new MenuInventario();
     private Combate combate = new Combate();
-
-    private JFrame inventario;
+    private Inventario inventario = new Inventario();
 
     public void winCombate(Agentes agentes, Criaturas criaturas){
 
@@ -142,7 +141,7 @@ public class MenuCombate extends JFrame{
         jButtonInventario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-                InventarioMenu();
+            menuInventario.winMenuInventario(inventario, agentes);
             }
         });
         jButtonInventario.setBounds(20,290,250,40);
@@ -163,37 +162,10 @@ public class MenuCombate extends JFrame{
         
         //configurações da janela
         frame.add(jPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(600, 200, sizeWin[0], sizeWin[1]);
         frame.setLayout(new BorderLayout(10,10));
         frame.setLayout(null);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         frame.setVisible(true);
-    }
-
-    public void InventarioMenu(){
-        if(inventario == null){
-            inventario = new JFrame("inventário");
-            inventario.setSize(300,300);
-            inventario.setLocationRelativeTo(this);
-            
-            JLabel jLabelItens = new JLabel("Ritual de cura: " + inventary.getItens());
-            jLabelItens.setBounds(20,10,200,30);
-
-            inventario.add(jLabelItens);
-            inventario.setLayout(new BorderLayout(10,10));
-
-            inventario.addWindowListener(new java.awt.event.WindowAdapter(){
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                    inventario = null;
-                }
-            });
-
-            inventario.setVisible(true);
-
-        } else {
-            inventario.dispose();
-            inventario = null;
-        }
     }
 }
