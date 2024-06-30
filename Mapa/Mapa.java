@@ -1,6 +1,10 @@
 package Mapa;
 
 import Agentes.Agentes;
+import Criaturas.Aberracao;
+import Criaturas.Marionete;
+import Criaturas.ZumbiDeSangue;
+import Criaturas.Criaturas;
 
 public class Mapa {
 
@@ -8,6 +12,9 @@ public class Mapa {
     private Agentes agente;
     private int width;
     private int height;
+    private Aberracao aberracao;
+    private Marionete marionete;
+    private ZumbiDeSangue zumbi;
 
     public Mapa(int width, int height){
         this.width = width;
@@ -24,18 +31,26 @@ public class Mapa {
             }
         }
         
+        marionete = new Marionete();
+        aberracao = new Aberracao();
+        zumbi = new ZumbiDeSangue();
+
         //distribuindo no mapa cinzas Humanas que podem ser utilizadas no ritual de envelhecimento (cura) ou Ritual de descarnar
-        map[2][3] = new MapaObjeto('C', "cinzas humanas");
+        map[2][3] = new MapaObjeto('H', "cinzas humanas");
         map[3][7] = new MapaObjeto('K', "chave 1");
         map[10][7] = new MapaObjeto('V', "chave 2");
         map[13][7] = new MapaObjeto('M', "chave 3");
         map[20][7] = new MapaObjeto('Z', "chave 4");
-        map[4][5] = new MapaObjeto('L', "inimigo");
-        
-    }
-    public void drawMapa(){
+        map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('C', "Zumbi De Sangue");
+        map[aberracao.getY()][aberracao.getX()] = new MapaObjeto('C', "Aberração");
+        map[marionete.getY()][marionete.getX()] = new MapaObjeto('C', "Marionete");
 
+        
+        
         drawCasa(5, 5);
+    }
+
+    public void drawMapa(){
 
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
@@ -68,23 +83,29 @@ public class Mapa {
         this.agente = agente;
     }
 
-    public MapaObjeto getObjectAt(int x, int y){
-        return map[y][x];
+    public MapaObjeto[][] getMap(){
+        return map;
     }
 
-    public void removeObjAt(int x, int y){
-        map[y][x] = null;
+    public int getWidth(){
+        return width;
     }
 
-    public boolean isValidPosition(int x, int y){
-        return x>=0 && x<width && y>=0 && y< height;
+    public int getHeight(){
+        return height;
     }
 
-    public boolean isPorta(int x, int y){
-        return map[y][x] != null && map[y][x].getCaracterOBJ() == '|';
-    }
-
-    public boolean isCasa(int x, int y){
-        return map[y][x] != null && map[y][x].getCaracterOBJ() == 'X';
+    public Criaturas getCriatura(int x, int y){
+        if(x == zumbi.getX() && y == zumbi.getY()){
+            return zumbi;
+        } else
+        if(x == marionete.getX() && y == marionete.getY()){
+            return marionete;
+        } else 
+        if(x == aberracao.getX() && y == aberracao.getY()){
+            return aberracao;
+        } else {
+            return null;
+        }
     }
 }
