@@ -1,14 +1,23 @@
 package Agentes;
 
+import java.util.Map;
+import java.util.Scanner;
+
+import Criaturas.Criaturas;
 import Mapa.Mapa;
 import Mapa.MapaObjeto;
+import Mapa.MapaUtilities;
+import Menu.MenuCombate;
 import SistemaRPG.Inventario;
 import SistemaRPG.Item;
 
 public class Agentes {
 
     private Inventario inventario = new Inventario();
+    private MapaUtilities mapaUtilities = new MapaUtilities();
     private Item item;
+    private Scanner scanner = new Scanner(System.in);
+    private int escolha;
 
     private int[] habilidade; //{força, agilidade, vigor, atletismo, ptOcultismo}
     private int[] saude; //{vida, ritualCura}
@@ -22,7 +31,7 @@ public class Agentes {
     }
 
     //movimentação
-    public void move(char direction, Mapa mapa){
+    public void move(char direction, Mapa mapa, Agentes agente){
         int newX = position[0];
         int newY = position[1];
 
@@ -41,38 +50,49 @@ public class Agentes {
             break;
         }
 
-        if(mapa.isValidPosition(newX, newY)){
-            if(mapa.isPorta(newX, newY) == true){ //ERRO -> VERIFICAR SE POSSUI A CHAVE PARA ENTRAR
+        if(mapaUtilities.isValidPosition(mapa.getWidth(),mapa.getHeight(), newX, newY)){
+            if(mapaUtilities.isPorta(mapa.getMap(), newX, newY)){ //ERRO -> VERIFICAR SE POSSUI A CHAVE PARA ENTRAR
                 System.out.println("voce precisa da chave para entrar nessa casa.");
-            } else if (mapa.isCasa(newX, newY)){
+            } else if (mapaUtilities.isCasa(mapa.getMap(), newX, newY)){
                 System.out.println("parede");
             } else {
-
                 position[0] = newX;
                 position[1] = newY;
                 CheckOBJ(mapa);
+
+                if(mapa.getCriatura(position[0], position[1])!=null){
+
+                    Criaturas criatura = mapa.getCriatura(newX, newY);
+    
+                    if(position[0] == criatura.getX() && position[1] == criatura.getY() && criatura.vivo()){
+                        System.out.println("voce encontrou uma criatura! digite 1 para lutar");
+                        escolha = scanner.nextInt();
+                        if(escolha == 1){
+                            MenuCombate menuCombate = new MenuCombate();
+                            menuCombate.winCombate(agente, criatura);
+                            mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
+                        }
+                    }
+                }
             }
         }
     }
 
     private void CheckOBJ(Mapa mapa){
-        MapaObjeto mapaObjeto = mapa.getObjectAt(position[0], position[1]);
-        if(mapaObjeto != null){
-            if(mapaObjeto.getCaracterOBJ() == 'K'){
-                //COMBATE 
-                System.out.println("voce encontrou um inimigo! digite 1 para lutar ou 2 para fugir");
-            } else {
+        MapaObjeto mapaObjeto = mapaUtilities.getObjAt(mapa.getMap(), position[0], position[1]);
+        if(mapaObjeto != null){ 
+            if(mapaObjeto.getCaracterOBJ() != 'C'){
                 item = new Item(mapaObjeto.getNomeObj());
                 inventario.addItem(item);
-                mapa.removeObjAt(position[0], position[1]);
+                mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
                 System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
                 System.out.println("objetos coletados: " + inventario.getItens());
             }
         }
     }
 
-    public void getInventario(){
-        System.out.println(inventario.getItens());
+    public Map<String, Integer> getInventario(){
+        return inventario.getItens();
     }
 
     //setters
