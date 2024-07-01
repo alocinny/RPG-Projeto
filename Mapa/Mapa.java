@@ -15,6 +15,10 @@ public class Mapa {
     private Aberracao aberracao;
     private Marionete marionete;
     private ZumbiDeSangue zumbi;
+    private String stringI;
+    private int i = 0;
+    private char charI;
+
 
     public Mapa(int width, int height){
         this.width = width;
@@ -37,10 +41,11 @@ public class Mapa {
 
         // Distribuindo objetos no mapa
         map[2][3] = new MapaObjeto('H', "cinzas humanas");
-        map[3][7] = new MapaObjeto('K', "chave 1");
-        map[10][7] = new MapaObjeto('V', "chave 1");
-        map[13][7] = new MapaObjeto('M', "chave 1");
-        map[20][7] = new MapaObjeto('Z', "chave 1");
+        map[3][7] = new MapaObjeto('1', "chave 1");
+        map[18][7] = new MapaObjeto('2', "chave 2");
+        map[29][10] = new MapaObjeto('3', "chave 3");
+        map[20][17] = new MapaObjeto('4', "chave 4");
+        map[27][23] = new MapaObjeto('5', "chave 5");
 
         // Posicionando criaturas no mapa
         map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('C', "Zumbi De Sangue");
@@ -100,7 +105,16 @@ public class Mapa {
                 }
             }
         }
-        map[y+2][x] = new MapaObjeto('|', "porta");
+       
+        stringI = toString(); 
+        charI = stringI.charAt(0);
+        map[y+2][x] = new MapaObjeto(charI, "porta");
+        i++;
+    }
+
+    public String toString(){
+
+        return ""+i;
     }
 
     public void setAgente(Agentes agente){
