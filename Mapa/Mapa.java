@@ -38,16 +38,18 @@ public class Mapa {
         //distribuindo no mapa cinzas Humanas que podem ser utilizadas no ritual de envelhecimento (cura) ou Ritual de descarnar
         map[2][3] = new MapaObjeto('H', "cinzas humanas");
         map[3][7] = new MapaObjeto('K', "chave 1");
-        map[10][7] = new MapaObjeto('V', "chave 2");
-        map[13][7] = new MapaObjeto('M', "chave 3");
-        map[20][7] = new MapaObjeto('Z', "chave 4");
+        map[10][7] = new MapaObjeto('V', "chave 1");
+        map[13][7] = new MapaObjeto('M', "chave 1");
+        map[20][7] = new MapaObjeto('Z', "chave 1");
         map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('C', "Zumbi De Sangue");
         map[aberracao.getY()][aberracao.getX()] = new MapaObjeto('C', "Aberração");
         map[marionete.getY()][marionete.getX()] = new MapaObjeto('C', "Marionete");
-
-        
-        
+ 
         drawCasa(5, 5);
+    }
+
+    public void addObjAt(char[][] map, MapaObjeto mapaObjeto, int x, int y){
+        map[y+1][x+1] = mapaObjeto.getCaracterOBJ();
     }
 
     public void drawMapa(){
