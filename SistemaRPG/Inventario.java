@@ -16,7 +16,14 @@ public class Inventario {
     }
     
     public void removeItem(Item item){
-        itens.remove(item.getNomeItem());
+        if(temItem(item)){
+            int count = itens.get(item.getNomeItem());
+            if(count > 1){
+                itens.put(item.getNomeItem(), count-1);
+            } else {
+                itens.remove(item.getNomeItem());
+            }
+        }
     }
 
     public boolean temItem(Item item){
