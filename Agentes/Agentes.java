@@ -1,6 +1,5 @@
 package Agentes;
 
-import java.util.Map;
 import java.util.Scanner;
 
 import Criaturas.Criaturas;
@@ -19,7 +18,7 @@ public class Agentes {
     private Scanner scanner = new Scanner(System.in);
     private int escolha;
 
-    private int[] habilidade; //{força, agilidade, vigor, atletismo, ptOcultismo}
+    private int[] habilidade; //{força, agilidade, vigor, atletismo, xp}
     private int[] saude; //{vida, ritualCura}
 
     private int[] position = {0,0}; //x,y
@@ -91,8 +90,15 @@ public class Agentes {
         }
     }
 
-    public Map<String, Integer> getInventario(){
-        return inventario.getItens();
+    public void setNewIventario(Mapa mapa){
+        
+        //teste de drop -> falta aparecer dnv no mapa
+        item = new Item("chave 1");
+        inventario.removeItem(item);
+    }
+
+    public String getInventario(){
+        return "itens:" + inventario.getItens();
     }
 
     //setters
@@ -123,6 +129,10 @@ public class Agentes {
 
             this.saude[0]-=danoLevado-defesa;
         }
+    }
+
+    public void newPtOcultismo(int ptOcultismo){
+        this.habilidade[4] = ptOcultismo;
     }
 
     //getters
