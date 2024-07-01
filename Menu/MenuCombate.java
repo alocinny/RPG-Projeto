@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import Criaturas.Criaturas;
 import Agentes.Agentes;
 import SistemaRPG.Combate;
-import SistemaRPG.Inventario;
 
 //mostrar os dados quando for fazer a GUI
     //private JLabel jLabelDados;
@@ -41,7 +40,6 @@ public class MenuCombate extends JFrame{
 
     private MenuInventario menuInventario = new MenuInventario();
     private Combate combate = new Combate();
-    private Inventario inventario = new Inventario();
 
     public void winCombate(Agentes agentes, Criaturas criaturas){
 
@@ -74,11 +72,13 @@ public class MenuCombate extends JFrame{
         jButtonAtacar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-                combate.combate(agentes, criaturas, 1);
-
-                //atualiza vida na tela
-                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
-                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+                if(criaturas.vivo() && agentes.vivo()){
+                    combate.combate(agentes, criaturas, 1);
+    
+                    //atualiza vida na tela
+                    jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                    jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+                }
             }
         });
         jButtonAtacar.setBounds(20,40,250,40);
@@ -87,11 +87,14 @@ public class MenuCombate extends JFrame{
         jButtonDescarnar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-                combate.combate(agentes, criaturas, 2);
+                if(criaturas.vivo() && agentes.vivo()){
 
-                //atualiza vida na tela
-                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
-                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+                    combate.combate(agentes, criaturas, 2);
+    
+                    //atualiza vida na tela
+                    jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                    jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+                }
             }
         });
         jButtonDescarnar.setBounds(20,90,250,40);
@@ -100,12 +103,14 @@ public class MenuCombate extends JFrame{
         jButtonInfligirDoenca.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-                combate.combate(agentes, criaturas, 3);
+                if(criaturas.vivo() && agentes.vivo()){
 
-                //atualiza vida na tela
-                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
-                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
-
+                    combate.combate(agentes, criaturas, 3);
+    
+                    //atualiza vida na tela
+                    jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                    jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+                }
             }
         });
         jButtonInfligirDoenca.setBounds(20, 140, 250, 40);
@@ -114,12 +119,14 @@ public class MenuCombate extends JFrame{
         jButtonDestruicaotemporal.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-                combate.combate(agentes, criaturas, 4);
+                if(criaturas.vivo() && agentes.vivo()){
 
-                //atualiza vida na tela
-                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
-                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
-
+                    combate.combate(agentes, criaturas, 4);
+    
+                    //atualiza vida na tela
+                    jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                    jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+                }
             }
         });
         jButtonDestruicaotemporal.setBounds(20,190,250,40);
@@ -128,12 +135,14 @@ public class MenuCombate extends JFrame{
         jButtonBencaoMaldita.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-                combate.combate(agentes, criaturas, 5);
-                
-                //atualiza vida na tela
-                jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
-                jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
-                
+                if(criaturas.vivo() && agentes.vivo()){
+
+                    combate.combate(agentes, criaturas, 5);
+                    
+                    //atualiza vida na tela
+                    jLabelVidaAgente.setText("Vida do agente: " + agentes.getVida());
+                    jLabelVidaCriatura.setText("vida da criatura: " + criaturas.getVida());
+                }
             }
         });
         jButtonBencaoMaldita.setBounds(20,240,250,40);
@@ -141,7 +150,7 @@ public class MenuCombate extends JFrame{
         jButtonInventario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
-            menuInventario.winMenuInventario(inventario, agentes);
+            menuInventario.winMenuInventario(agentes);
             }
         });
         jButtonInventario.setBounds(20,290,250,40);
