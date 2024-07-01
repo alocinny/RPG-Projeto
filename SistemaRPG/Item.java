@@ -11,8 +11,4 @@ public class Item {
     public String getNomeItem(){
         return nomeItem;
     }
-
-    public String toString(){
-        return nomeItem;
-    }
 }
