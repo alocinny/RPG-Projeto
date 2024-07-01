@@ -30,6 +30,7 @@ public class MenuProgressaoNivel extends JFrame {
         frame = new JFrame("Progressão de nível");
         jLabel = new JLabel();
         jPanel = new JPanel();
+
         jButtonForca = new JButton("Progredir afinidade");
         jButtonAgilidade = new JButton("Progredir agilidade");
 
@@ -42,7 +43,7 @@ public class MenuProgressaoNivel extends JFrame {
         jLabelAfinidade.setBounds(50,50,200,30);
 
         //mostra na janela o xp total do agente
-        jLabelXp = new JLabel("Xp: " + agentes.getPtOcultismo());
+        jLabelXp = new JLabel("pontos de ocultismo: " + agentes.getPtOcultismo());
         jLabelXp.setBounds(50,50,200,30);
 
         //botao para progredir Afinidade
@@ -74,6 +75,7 @@ public class MenuProgressaoNivel extends JFrame {
         jButtonAgilidade.setBounds(20,90,250,40);
         
         //adiciona os labels no panel
+        jPanel.setVisible(true);
         jPanel.add(jLabel);
         jPanel.add(jLabelAfinidade);
         jPanel.add(jLabelAgilidade);
