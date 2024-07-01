@@ -7,8 +7,7 @@ import Agentes.OcultistaConhecimento;
 import Agentes.OcultistaMedo;
 import Agentes.OcultistaSangue;
 import Mapa.Mapa;
-import Menu.MenuInventario;
-import Menu.MenuProgressaoNivel;
+import Menu.MenuJogo;
 import SistemaRPG.ProgressaoNivel;
 
 public class Main {
@@ -28,7 +27,7 @@ public class Main {
         int[] habilidadeConhecimento = {5,2,8,4,5};
         int[] saudeConhecimento = {90,0};
 
-        //andar com w,a,s,d, pressionar 'e' para acessar inventário, 'q' para acessar o menu de progressão de nível e 'p' para sair
+        //andar com w,a,s,d, pressionar 'e' para acessar o menul e 'p' para sair
 
         //mapa
         Mapa mapa = new Mapa(50,30);
@@ -37,8 +36,7 @@ public class Main {
         OcultistaConhecimento ocultistaConhecimento = new OcultistaConhecimento(habilidadeConhecimento, saudeConhecimento);
         OcultistaMedo ocultistaMedo = new OcultistaMedo(habilidadeMedo, saudeMedo);
         OcultistaSangue ocultistaSangue = new OcultistaSangue(habilidadeSangue, saudeSangue);
-        MenuInventario menuInventario = new MenuInventario();
-        MenuProgressaoNivel menuProgressaoNivel = new MenuProgressaoNivel();
+        MenuJogo menuJogo = new MenuJogo();
 
         Scanner scanner = new Scanner(System.in);
         
@@ -83,15 +81,10 @@ public class Main {
             } 
 
             if(direction == 'e'){
-                menuInventario.winMenuInventario(agente);
+                menuJogo.winMenuJogo(progressaoNivel, agente);
             }
 
-            if(direction == 'q'){
-                menuProgressaoNivel.winMenuProgressaoNivel(progressaoNivel, agente);
-            }
-
-
-            agente.move(direction,mapa, agente);
+            agente.move(direction,mapa,agente);
         }
 
         System.out.println("fim");
