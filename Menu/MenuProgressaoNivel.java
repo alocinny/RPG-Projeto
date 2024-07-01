@@ -14,7 +14,7 @@ import SistemaRPG.ProgressaoNivel;
 
 public class MenuProgressaoNivel extends JFrame {
 
-    private int[] sizeWin = {600, 600};
+    private int[] sizeWin = {300, 300};
     private String mensagem = "Sem xp suficiente";
     private JFrame frame;
     private JPanel jPanel;
@@ -22,7 +22,7 @@ public class MenuProgressaoNivel extends JFrame {
     private JLabel jLabelAfinidade;
     private JLabel jLabelAgilidade;
     private JLabel jLabelXp;
-    private JButton jButtonAfinidade;
+    private JButton jButtonForca;
     private JButton jButtonAgilidade;
 
     public void winMenuProgressaoNivel(ProgressaoNivel progressaoNivel, Agentes agentes){
@@ -30,7 +30,7 @@ public class MenuProgressaoNivel extends JFrame {
         frame = new JFrame("Progressão de nível");
         jLabel = new JLabel();
         jPanel = new JPanel();
-        jButtonAfinidade = new JButton("Progredir afinidade");
+        jButtonForca = new JButton("Progredir afinidade");
         jButtonAgilidade = new JButton("Progredir agilidade");
 
         //mostra na janela a agilidade total do agente
@@ -42,32 +42,32 @@ public class MenuProgressaoNivel extends JFrame {
         jLabelAfinidade.setBounds(50,50,200,30);
 
         //mostra na janela o xp total do agente
-        jLabelXp = new JLabel("Xp: " + progressaoNivel.getXp());
+        jLabelXp = new JLabel("Xp: " + agentes.getPtOcultismo());
         jLabelXp.setBounds(50,50,200,30);
 
         //botao para progredir Afinidade
-        jButtonAfinidade.addActionListener(new ActionListener(){
+        jButtonForca.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                if(progressaoNivel.getXp()<3){
+                if(agentes.getPtOcultismo()<3){
                     JOptionPane.showMessageDialog(null, mensagem);
                 } else {
                     progressaoNivel.newXpDecrementaforca();
-                    jLabelAfinidade.setText("Afinidade: " + agentes.getForca());
-                    jLabelXp.setText("Xp: " + progressaoNivel.getXp());
+                    jLabelAfinidade.setText("força: " + agentes.getForca());
+                    jLabelXp.setText("pontos de ocultismo: " + agentes.getPtOcultismo());
                 }
             }
         });
-        jButtonAfinidade.setBounds(20,40,250,40);
+        jButtonForca.setBounds(20,40,250,40);
 
         //botao para progredir Agilidade
         jButtonAgilidade.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                if(progressaoNivel.getXp()<2){
+                if(agentes.getPtOcultismo()<2){
                     JOptionPane.showMessageDialog(null, mensagem);
                 } else {
                     progressaoNivel.newXpDecrementaAgilidade();
                     jLabelAgilidade.setText("Agilidade: " + agentes.getAgilidade());
-                    jLabelXp.setText("Xp: " + progressaoNivel.getXp());
+                    jLabelXp.setText("pontos de ocultismo: " + agentes.getPtOcultismo());
                 }
             }
         });
@@ -80,12 +80,12 @@ public class MenuProgressaoNivel extends JFrame {
         jPanel.add(jLabelXp);
         
         //adiciona botoes no panel
-        frame.add(jButtonAfinidade);
+        frame.add(jButtonForca);
         frame.add(jButtonAgilidade);
         
         //confugirações da janela
         frame.add(jPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         frame.setBounds(600, 200, sizeWin[0], sizeWin[1]);
         frame.setVisible(true);
         frame.setLayout(null);
