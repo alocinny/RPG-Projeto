@@ -38,12 +38,7 @@ public class Mapa {
         marionete = new Marionete();
         aberracao = new Aberracao();
         zumbi = new ZumbiDeSangue();
-
-        // Posicionando criaturas no mapa
-        map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('C', "Zumbi De Sangue");
-        map[aberracao.getY()][aberracao.getX()] = new MapaObjeto('C', "Aberração");
-        map[marionete.getY()][marionete.getX()] = new MapaObjeto('C', "Marionete");
-
+      
         // Desenhando uma casa no mapa
         
         //casa 1
@@ -80,11 +75,11 @@ public class Mapa {
         map[8][7] = new MapaObjeto('H', "cinzas humanas");
 
         //chaves 
-        map[3][7] = new MapaObjeto('1', "1");
-        map[18][7] = new MapaObjeto('2', "2");
-        map[19][24] = new MapaObjeto('3', "3");
-        map[15][38] = new MapaObjeto('4', "4");
-        map[28][42] = new MapaObjeto('5', "5");
+        map[3][7] = new MapaObjeto('K', "1");
+        map[18][7] = new MapaObjeto('K', "2");
+        map[19][24] = new MapaObjeto('K', "3");
+        map[15][38] = new MapaObjeto('K', "4");
+        map[28][42] = new MapaObjeto('K', "5");
 
        //Objetos amaldicoados
        map[7][27] = new MapaObjeto('O', "objeto");
@@ -98,9 +93,12 @@ public class Mapa {
 
 
         // Posicionando criaturas no mapa
-        map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('Z', "Zumbi De Sangue");
-        map[aberracao.getY()][aberracao.getX()] = new MapaObjeto('B', "Aberração");
-        map[marionete.getY()][marionete.getX()] = new MapaObjeto('M', "Marionete");
+        map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('C', "Zumbi De Sangue");
+        map[aberracao.getY()][aberracao.getX()] = new MapaObjeto('C', "Aberração");
+        map[marionete.getY()][marionete.getX()] = new MapaObjeto('C', "Marionete");
+
+        // Desenhando uma casa no mapa
+        //casa 1
     }
 
     public void addObjAt(char[][] map, MapaObjeto mapaObjeto, int x, int y){

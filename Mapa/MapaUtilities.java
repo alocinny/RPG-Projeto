@@ -14,7 +14,7 @@ public class MapaUtilities {
     }
 
     public boolean isPorta(MapaObjeto[][] mapa, int x, int y){
-        return (mapa[y][x]!=null) && (mapa[y][x].getCaracterOBJ() == '0') && (mapa[y][x].getCaracterOBJ() == '1') && (mapa[y][x].getCaracterOBJ() == '2') && (mapa[y][x].getCaracterOBJ() == '3') && (mapa[y][x].getCaracterOBJ() == '4') && (mapa[y][x].getCaracterOBJ() == '5') && (mapa[y][x].getCaracterOBJ() == '6') && (mapa[y][x].getCaracterOBJ() == '7') && (mapa[y][x].getCaracterOBJ() == '8' && (mapa[y][x].getCaracterOBJ() == '9'));
+        return (mapa[y][x]!=null) && (mapa[y][x].getCaracterOBJ() == '0' || mapa[y][x].getCaracterOBJ() == '1' || mapa[y][x].getCaracterOBJ() == '2' || mapa[y][x].getCaracterOBJ() == '3' || mapa[y][x].getCaracterOBJ() == '4' || mapa[y][x].getCaracterOBJ() == '5' || mapa[y][x].getCaracterOBJ() == '6' || mapa[y][x].getCaracterOBJ() == '7' || mapa[y][x].getCaracterOBJ() == '8' || mapa[y][x].getCaracterOBJ() == '9');
     }
 
     public boolean isCasa(MapaObjeto[][] mapa, int x, int y){

@@ -73,9 +73,11 @@ public class Agentes {
                             menuCombate.winCombate(agente, criatura);
                         }
                     }
-                    MapaObjeto mapaObjeto = mapaUtilities.getObjAt(mapa.getMap(), position[0], position[1]);
-                    if(mapaObjeto.getCaracterOBJ() == 'C' && !criatura.vivo()){
-                        mapaUtilities.removeObjAt(mapa.getMap(), newX, newY);
+                    if(mapaUtilities.getObjAt(mapa.getMap(), position[0], position[1]) != null){
+                        MapaObjeto mapaObjeto = mapaUtilities.getObjAt(mapa.getMap(), position[0], position[1]);
+                        if(mapaObjeto.getCaracterOBJ() == 'C' && !criatura.vivo()){
+                            mapaUtilities.removeObjAt(mapa.getMap(), newX, newY);
+                        }
                     }
                 }
             }
@@ -84,19 +86,18 @@ public class Agentes {
 
     private void CheckOBJ(Mapa mapa){
         MapaObjeto mapaObjeto = mapaUtilities.getObjAt(mapa.getMap(), position[0], position[1]);
-        if(mapaObjeto != null){ 
-            if(mapaObjeto.getCaracterOBJ() != 'C'){
-                item = new Item(mapaObjeto.getNomeObj());
-                inventario.addItem(item);
-                if(inventario.temItem(new Item("espaco vazio"))){
-                    inventario.removeItem(new Item("espaco vazio"));
-                }
-                mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
-                System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
-                System.out.println("objetos coletados: " + inventario.getItens());
+        if(mapaObjeto != null && mapaObjeto.getCaracterOBJ() != 'C'){
+            item = new Item(mapaObjeto.getNomeObj());
+            inventario.addItem(item);
+            if(inventario.temItem(new Item("espaco vazio"))){
+                inventario.removeItem(new Item("espaco vazio"));
             }
+            mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
+            System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
+            System.out.println("objetos coletados: " + inventario.getItens());
         }
     }
+    
 
     public String getInventario(){
         return "itens:" + inventario.getItens();
