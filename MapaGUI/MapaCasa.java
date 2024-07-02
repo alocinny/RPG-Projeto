@@ -1,4 +1,4 @@
-package Mapa;
+package MapaGUI;
 
 public class MapaCasa {
     

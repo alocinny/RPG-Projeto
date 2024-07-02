@@ -1,44 +1,51 @@
 package SistemaRPG;
 
-import Menu.MenuInventario;
+import java.util.Map;
+import java.util.HashMap;
 
-public class Inventario extends MenuInventario{
+public class Inventario {
 
-    private int[] inventario; // {ritualDeCura, chaves, objetosAmaldicoados}
+    private Map<String, Integer> itens;
+    int i=0;
 
-    public Inventario(int[] qntItens){
-        this.inventario = qntItens;
+    public Inventario(){
+        itens = new HashMap<>();
     }
 
-    //setters
-    public void newRitualCura(){
-        //incrementa a quantidade de ritual de cura
-        inventario[0]+=1;
-    }
-
-    public void newChave(){
-        //incrementa a quantidade de chaves que o player tem
-        inventario[1]+=1;
+    public void addItem(Item item){
+        itens.put(item.getNomeItem(), itens.getOrDefault(item.getNomeItem(), 0) + 1);
+        i++;
+        System.out.println(i);
     }
     
-    public void newObjAmaldicoado(){
-        //incrementa a quantidade de objetos amaldicoados que o player tem
-        inventario[2]+=1;
+    public void removeItem(Item item){
+        if(temItem(item)){
+            int count = itens.get(item.getNomeItem());
+            if(count > 1){
+                itens.put(item.getNomeItem(), count-1);
+                i--;
+            } else {
+                itens.remove(item.getNomeItem());
+            }
+        }
     }
 
-    //getters
-    public int getRitualCura(){
-        //retorna a quantidade de ritual de cura que o player tem
-        return inventario[0];
+    public int getI(){
+        return i;
     }
 
-    public int getChave(){
-        //retorna a quantidade de chaves que o player tem
-        return inventario[1];
+    public boolean temItem(Item item){
+        return itens.containsKey(item.getNomeItem());
     }
 
-    public int getObjAmaldicoado(){
-        //retorna a quantidade de objetos amaldiçoados que o player tem
-        return inventario[2];
+    public String getTemItem(Item item){
+        if(temItem(item)){
+            return item.getNomeItem();
+        }
+        return ". ";
+    }
+
+    public Map<String, Integer> getItens(){
+        return itens;
     }
 }

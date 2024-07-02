@@ -7,11 +7,13 @@ import Criaturas.Criaturas;
 
 public class Combate {
     
+    Inventario inventario = new Inventario();
     //DADOS ---------------------------------------
     private int[] d4;
     private int[] d10;
     private int sum;
     private Random random = new Random();
+    private ProgressaoNivel progressaoNivel;
     
     //setters
     public void setD4(int numDados){
@@ -213,8 +215,16 @@ public class Combate {
             System.out.println("o ocultista desvia do ataque, reduzindo em " + getDefesa() + " o dano da criatura");
         }
 
+        if(!criatura.vivo()){
+            System.out.println("voce matou a criatura! ganhos: 2 pontos de ocultismo");
+            progressaoNivel = new ProgressaoNivel(agente.getPtOcultismo(), agente);
+            progressaoNivel.newXpIncrementa();
+        }
+        if(!agente.vivo()){
+            System.out.println("a criatura matou voce!");
+        }
+
         System.out.println("vida ocultista: " + agente.getVida());
         System.out.println("vida da criatura: " + criatura.getVida());
-
     }
 }
