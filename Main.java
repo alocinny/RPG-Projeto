@@ -9,6 +9,7 @@ import Agentes.OcultistaSangue;
 import Mapa.Mapa;
 import Menu.MenuJogo;
 import SistemaRPG.ProgressaoNivel;
+import SistemaRPG.SistemaDialogo;
 
 public class Main {
 
@@ -37,6 +38,9 @@ public class Main {
         OcultistaMedo ocultistaMedo = new OcultistaMedo(habilidadeMedo, saudeMedo);
         OcultistaSangue ocultistaSangue = new OcultistaSangue(habilidadeSangue, saudeSangue);
         MenuJogo menuJogo = new MenuJogo();
+
+        SistemaDialogo sistemaDialogo = new SistemaDialogo();
+        sistemaDialogo.lerArquivoEDialogar("SistemaRPG\\dialogoVerissimo.txt");
 
         Scanner scanner = new Scanner(System.in);
         
