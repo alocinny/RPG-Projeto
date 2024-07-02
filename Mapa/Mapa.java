@@ -75,11 +75,11 @@ public class Mapa {
         map[8][7] = new MapaObjeto('H', "cinzas humanas");
 
         //chaves 
-        map[3][7] = new MapaObjeto('1', "chave 1");
-        map[18][7] = new MapaObjeto('2', "chave 2");
-        map[19][24] = new MapaObjeto('3', "chave 3");
-        map[15][38] = new MapaObjeto('4', "chave 4");
-        map[28][42] = new MapaObjeto('5', "chave 5");
+        map[3][7] = new MapaObjeto('1', "1");
+        map[18][7] = new MapaObjeto('2', "2");
+        map[19][24] = new MapaObjeto('3', "3");
+        map[15][38] = new MapaObjeto('4', "4");
+        map[28][42] = new MapaObjeto('5', "5");
 
        //Objetos amaldicoados
        map[7][27] = new MapaObjeto('O', "objeto");
