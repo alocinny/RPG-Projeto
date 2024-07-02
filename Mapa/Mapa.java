@@ -38,8 +38,7 @@ public class Mapa {
         marionete = new Marionete();
         aberracao = new Aberracao();
         zumbi = new ZumbiDeSangue();
-        
-       
+      
         // Desenhando uma casa no mapa
         
         //casa 1
@@ -135,7 +134,7 @@ public class Mapa {
        
         stringI = toString(); 
         charI = stringI.charAt(0);
-        map[y+2][x] = new MapaObjeto(charI, "porta");
+        map[y+2][x] = new MapaObjeto(charI, stringI);
         i++;
     }
 

@@ -7,6 +7,7 @@ import Criaturas.Criaturas;
 
 public class Combate {
     
+    Inventario inventario = new Inventario();
     //DADOS ---------------------------------------
     private int[] d4;
     private int[] d10;
@@ -225,6 +226,5 @@ public class Combate {
 
         System.out.println("vida ocultista: " + agente.getVida());
         System.out.println("vida da criatura: " + criatura.getVida());
-
     }
 }

@@ -157,11 +157,12 @@ public class MenuCombate extends JFrame{
 
         //adiciona os labels no panel
         jPanel.setVisible(true);
+        jPanel.setBounds(20,20,250,40);
         jPanel.add(jLabel);
+        jPanel.add(jLabelVidaAgente);
+        jPanel.add(jLabelVidaCriatura);
         
         frame.add(jLabelScript);
-        frame.add(jLabelVidaAgente);
-        frame.add(jLabelVidaCriatura);
         frame.add(jButtonAtacar);
         frame.add(jButtonDescarnar);
         frame.add(jButtonInfligirDoenca);
