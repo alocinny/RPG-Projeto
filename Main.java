@@ -9,6 +9,7 @@ import Agentes.OcultistaSangue;
 import Mapa.Mapa;
 import Menu.MenuJogo;
 import SistemaRPG.ProgressaoNivel;
+import SistemaRPG.SistemaDialogo;
 
 public class Main {
 
@@ -48,6 +49,9 @@ public class Main {
         System.out.println("3 - Ocultista Sangue:\nagilidade: " + ocultistaSangue.getAgilidade() + "\nforça: " + ocultistaSangue.getForca() + "\nvigor: " + ocultistaSangue.getvigor() + "\natletismo: " + ocultistaSangue.getAtletismo() + "\n");
         
         escolha = scanner.nextInt();
+
+        SistemaDialogo sistemaDialogo = new SistemaDialogo();
+        sistemaDialogo.lerArquivoEDialogar("Verissimo.txt");
         
         switch (escolha) {
             case 1:
