@@ -41,11 +41,11 @@ public class Mapa {
 
         // Distribuindo objetos no mapa
         map[2][3] = new MapaObjeto('H', "cinzas humanas");
-        map[3][7] = new MapaObjeto('1', "chave 1");
-        map[18][7] = new MapaObjeto('2', "chave 2");
-        map[29][10] = new MapaObjeto('3', "chave 3");
-        map[20][17] = new MapaObjeto('4', "chave 4");
-        map[27][23] = new MapaObjeto('5', "chave 5");
+        map[3][7] = new MapaObjeto('K', "1");
+        map[18][7] = new MapaObjeto('K', "2");
+        map[29][10] = new MapaObjeto('K', "3");
+        map[20][17] = new MapaObjeto('K', "4");
+        map[27][23] = new MapaObjeto('K', "5");
 
         // Posicionando criaturas no mapa
         map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('C', "Zumbi De Sangue");
@@ -108,7 +108,7 @@ public class Mapa {
        
         stringI = toString(); 
         charI = stringI.charAt(0);
-        map[y+2][x] = new MapaObjeto(charI, "porta");
+        map[y+2][x] = new MapaObjeto(charI, stringI);
         i++;
     }
 

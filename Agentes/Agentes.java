@@ -50,7 +50,9 @@ public class Agentes {
         }
 
         if(mapaUtilities.isValidPosition(mapa.getWidth(),mapa.getHeight(), newX, newY)){
-            if(mapaUtilities.isPorta(mapa.getMap(), newX, newY)){ //ERRO -> VERIFICAR SE POSSUI A CHAVE PARA ENTRAR
+            item = new Item(mapaUtilities.proxCaracterWalkPlayer(mapa.getMap(), newX, newY));
+
+            if(mapaUtilities.isPorta(mapa.getMap(), newX, newY) && (mapaUtilities.proxCaracterWalkPlayer(mapa.getMap(), newX, newY) != inventario.getTemItem(item))){
                 System.out.println("voce precisa da chave para entrar nessa casa.");
             } else if (mapaUtilities.isCasa(mapa.getMap(), newX, newY)){
                 System.out.println("parede");
@@ -69,8 +71,11 @@ public class Agentes {
                         if(escolha == 1){
                             MenuCombate menuCombate = new MenuCombate();
                             menuCombate.winCombate(agente, criatura);
-                            mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
                         }
+                    }
+                    MapaObjeto mapaObjeto = mapaUtilities.getObjAt(mapa.getMap(), position[0], position[1]);
+                    if(mapaObjeto.getCaracterOBJ() == 'C' && !criatura.vivo()){
+                        mapaUtilities.removeObjAt(mapa.getMap(), newX, newY);
                     }
                 }
             }
@@ -83,6 +88,9 @@ public class Agentes {
             if(mapaObjeto.getCaracterOBJ() != 'C'){
                 item = new Item(mapaObjeto.getNomeObj());
                 inventario.addItem(item);
+                if(inventario.temItem(new Item("espaco vazio"))){
+                    inventario.removeItem(new Item("espaco vazio"));
+                }
                 mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
                 System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
                 System.out.println("objetos coletados: " + inventario.getItens());
@@ -90,15 +98,12 @@ public class Agentes {
         }
     }
 
-    public void setNewIventario(Mapa mapa){
-        
-        //teste de drop -> falta aparecer dnv no mapa
-        item = new Item("chave 1");
-        inventario.removeItem(item);
-    }
-
     public String getInventario(){
         return "itens:" + inventario.getItens();
+    }
+
+    public boolean temItem(){
+        return inventario.temItem(item);
     }
 
     //setters
