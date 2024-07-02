@@ -1,73 +1,147 @@
 package Mapa;
-import javax.swing.JFrame;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import Agentes.Agentes;
+import Criaturas.Aberracao;
+import Criaturas.Marionete;
+import Criaturas.ZumbiDeSangue;
+import Criaturas.Criaturas;
 
-// criando desenhos com o java swing 
-// metodo paint
+public class Mapa {
 
-// classe herdando de jframe
-    public class Mapa extends JFrame {
-        //construtor da classe
-        public Mapa() {
-            
-            //metodos de configuracao de uma janela
-            setSize(1400,1000);
-            setLocationRelativeTo(null);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setVisible(true);
-            
-        }
-
-        //sobrescrita do metodo paint
-        public void paint(Graphics g){
-            //g é um objeto
-            
-            //x1 é onde começa e x2 é onde termina
-            //x=horizontal
-            //y=vertical
-
-            //desenhar retangulos 
-            //cor
-            g.setColor(Color.green);
-           
-           
-            //metodos de desenhar um retangulo preenchido
-            //casa 2
-            g.fillRect(100, 200, 150, 150);
-            //casa 4 
-            g.fillRect(350, 200, 150, 150);
-            //casa 6
-            g.fillRect(600, 200, 150, 150);
-            //casa 8
-            g.fillRect(850, 100, 150, 150);
-            //casa 10
-            g.fillRect(1110, 100, 150, 350);
-            //casa 1
-            g.fillRect(100, 550, 150, 150);
-            //casa 3
-            g.fillRect(350, 550, 150, 150);
-            //casa 5
-            g.fillRect(600, 550, 150, 150);
-            //casa 7
-            g.fillRect(850, 550, 150, 150);
-            //casa 9
-            g.fillRect(1110, 600, 150, 150);
-
-            //modificar cor do desenho deve ser colocada antes do proprio desenho
-           
-            
-           
-
-        }
-
-        public static void main(String[]args){
-            //instanciando classe
-            new Mapa();
-        }
+    private MapaObjeto[][] map;
+    private Agentes agente;
+    private int width;
+    private int height;
+    private Aberracao aberracao;
+    private Marionete marionete;
+    private ZumbiDeSangue zumbi;
+    private String stringI;
+    private int i = 0;
+    private char charI;
 
 
+    public Mapa(int width, int height){
+        this.width = width;
+        this.height = height;
+        map = new MapaObjeto[height][width];
 
+        preencherMapa();
     }
 
+    public void preencherMapa(){
+        for(int i=0; i<height; i++){
+            for(int j=0; j<width; j++){
+                map[i][j] = null;
+            }
+        }
+
+        marionete = new Marionete();
+        aberracao = new Aberracao();
+        zumbi = new ZumbiDeSangue();
+
+        // Distribuindo objetos no mapa
+        map[2][3] = new MapaObjeto('H', "cinzas humanas");
+        map[3][7] = new MapaObjeto('1', "chave 1");
+        map[18][7] = new MapaObjeto('2', "chave 2");
+        map[29][10] = new MapaObjeto('3', "chave 3");
+        map[20][17] = new MapaObjeto('4', "chave 4");
+        map[27][23] = new MapaObjeto('5', "chave 5");
+
+        // Posicionando criaturas no mapa
+        map[zumbi.getY()][zumbi.getX()] = new MapaObjeto('C', "Zumbi De Sangue");
+        map[aberracao.getY()][aberracao.getX()] = new MapaObjeto('C', "Aberração");
+        map[marionete.getY()][marionete.getX()] = new MapaObjeto('C', "Marionete");
+
+        // Desenhando uma casa no mapa
+        //casa 1
+        drawCasa(5, 5);
+        //casa 2
+        drawCasa(15, 5);
+        //casa 3
+        drawCasa(25, 5);
+        //casa 4
+        drawCasa(35, 2);
+        //casa 5
+        drawCasa(43, 2);
+        //casa 6
+        drawCasa(5, 23);
+        //casa 7
+        drawCasa(15, 23);
+         //casa 8
+        drawCasa(25, 23);
+         //casa 9
+        drawCasa(35, 20);
+        //casa 10
+        drawCasa(43, 20);
+    }
+
+    public void addObjAt(char[][] map, MapaObjeto mapaObjeto, int x, int y){
+        map[y+1][x+1] = mapaObjeto.getCaracterOBJ();
+    }
+
+    public void drawMapa(){
+
+        for(int i=0; i<height; i++){
+            for(int j=0; j<width; j++){
+                if(i == agente.getY() && j == agente.getX()){
+                    System.out.print("A ");
+                } else if(map[i][j] == null){
+                    System.out.print(". ");
+                } else {
+                    System.out.print(map[i][j].getCaracterOBJ() + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void drawCasa(int x, int y){
+        for(int i=y; i<y+5; i++){
+            for(int j=x; j<x+5; j++){
+                if(i==y || i == y+4 || j==x || j==x+4){
+                    map[i][j] = new MapaObjeto('X', "parede");
+                } else {
+                    map[i][j] = new MapaObjeto('.', "espaco vazio");
+                }
+            }
+        }
+       
+        stringI = toString(); 
+        charI = stringI.charAt(0);
+        map[y+2][x] = new MapaObjeto(charI, "porta");
+        i++;
+    }
+
+    public String toString(){
+
+        return ""+i;
+    }
+
+    public void setAgente(Agentes agente){
+        this.agente = agente;
+    }
+
+    public MapaObjeto[][] getMap(){
+        return map;
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
+    public Criaturas getCriatura(int x, int y){
+        if(x == zumbi.getX() && y == zumbi.getY()){
+            return zumbi;
+        } else if(x == marionete.getX() && y == marionete.getY()){
+            return marionete;
+        } else if(x == aberracao.getX() && y == aberracao.getY()){
+            return aberracao;
+        } else {
+            return null;
+        }
+    }
+}

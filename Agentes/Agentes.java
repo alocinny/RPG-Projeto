@@ -1,14 +1,104 @@
 package Agentes;
 
+import java.util.Scanner;
+
+import Criaturas.Criaturas;
+import Mapa.Mapa;
+import Mapa.MapaObjeto;
+import Mapa.MapaUtilities;
+import Menu.MenuCombate;
+import SistemaRPG.Inventario;
+import SistemaRPG.Item;
+
 public class Agentes {
 
-    private int[] habilidade; //{força, agilidade, vigor, atletismo, ptOcultismo}
+    private Inventario inventario = new Inventario();
+    private MapaUtilities mapaUtilities = new MapaUtilities();
+    private Item item;
+    private Scanner scanner = new Scanner(System.in);
+    private int escolha;
+
+    private int[] habilidade; //{força, agilidade, vigor, atletismo, xp}
     private int[] saude; //{vida, ritualCura}
+
+    private int[] position = {0,0}; //x,y
 
     //construtor
     public Agentes(int[] hability, int[] health){
         this.habilidade = hability;
         this.saude = health;
+    }
+
+    //movimentação
+    public void move(char direction, Mapa mapa, Agentes agente){
+        int newX = position[0];
+        int newY = position[1];
+
+        switch(direction){
+            case 'w': 
+                newY--;
+            break;
+            case 's': 
+                newY++;
+            break;
+            case 'a': 
+                newX--;
+            break;
+            case 'd': 
+                newX++;
+            break;
+        }
+
+        if(mapaUtilities.isValidPosition(mapa.getWidth(),mapa.getHeight(), newX, newY)){
+            if(mapaUtilities.isPorta(mapa.getMap(), newX, newY)){ //ERRO -> VERIFICAR SE POSSUI A CHAVE PARA ENTRAR
+                System.out.println("voce precisa da chave para entrar nessa casa.");
+            } else if (mapaUtilities.isCasa(mapa.getMap(), newX, newY)){
+                System.out.println("parede");
+            } else {
+                position[0] = newX;
+                position[1] = newY;
+                CheckOBJ(mapa);
+
+                if(mapa.getCriatura(position[0], position[1])!=null){
+
+                    Criaturas criatura = mapa.getCriatura(newX, newY);
+    
+                    if(position[0] == criatura.getX() && position[1] == criatura.getY() && criatura.vivo()){
+                        System.out.println("voce encontrou uma criatura! digite 1 para lutar");
+                        escolha = scanner.nextInt();
+                        if(escolha == 1){
+                            MenuCombate menuCombate = new MenuCombate();
+                            menuCombate.winCombate(agente, criatura);
+                            mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void CheckOBJ(Mapa mapa){
+        MapaObjeto mapaObjeto = mapaUtilities.getObjAt(mapa.getMap(), position[0], position[1]);
+        if(mapaObjeto != null){ 
+            if(mapaObjeto.getCaracterOBJ() != 'C'){
+                item = new Item(mapaObjeto.getNomeObj());
+                inventario.addItem(item);
+                mapaUtilities.removeObjAt(mapa.getMap(), position[0], position[1]);
+                System.out.println("objeto: " + item.getNomeItem() + " coletado! ");
+                System.out.println("objetos coletados: " + inventario.getItens());
+            }
+        }
+    }
+
+    public void setNewIventario(Mapa mapa){
+        
+        //teste de drop -> falta aparecer dnv no mapa
+        item = new Item("chave 1");
+        inventario.removeItem(item);
+    }
+
+    public String getInventario(){
+        return "itens:" + inventario.getItens();
     }
 
     //setters
@@ -39,6 +129,10 @@ public class Agentes {
 
             this.saude[0]-=danoLevado-defesa;
         }
+    }
+
+    public void newPtOcultismo(int ptOcultismo){
+        this.habilidade[4] = ptOcultismo;
     }
 
     //getters
@@ -81,5 +175,13 @@ public class Agentes {
 
     public int[] getSaude(){
         return saude;
+    }
+
+    public int getX(){
+        return position[0];
+    }
+
+    public int getY(){
+        return position[1];
     }
 }

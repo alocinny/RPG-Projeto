@@ -1,104 +1,92 @@
+//teste
+
 import java.util.Scanner;
-import java.util.Random;
 
 import Agentes.Agentes;
 import Agentes.OcultistaConhecimento;
 import Agentes.OcultistaMedo;
 import Agentes.OcultistaSangue;
-import Criaturas.Aberracao;
-import Criaturas.Criaturas;
-import Criaturas.Marionete;
-import Criaturas.ZumbiDeSangue;
-//import Menu.MenuCombate;
-import SistemaRPG.Combate;
+import Mapa.Mapa;
+import Menu.MenuJogo;
+import SistemaRPG.ProgressaoNivel;
 
-//teste combate
 public class Main {
 
+    private static int escolha;
+    private static Agentes agente;
+
+    
     public static void main(String[] args) {
 
+        int[] habilidadeSangue = {3,4,6,5,5};
+        int[] saudeSangue = {110,0};
+    
+        int[] habilidadeMedo = {4,3,6,5,5};
+        int[] saudeMedo = {100,0};
+    
+        int[] habilidadeConhecimento = {5,2,8,4,5};
+        int[] saudeConhecimento = {90,0};
+
+        //andar com w,a,s,d, pressionar 'e' para acessar o menul e 'p' para sair
+
+        //mapa
+        Mapa mapa = new Mapa(50,30);
+
+        //agentes
+        OcultistaConhecimento ocultistaConhecimento = new OcultistaConhecimento(habilidadeConhecimento, saudeConhecimento);
+        OcultistaMedo ocultistaMedo = new OcultistaMedo(habilidadeMedo, saudeMedo);
+        OcultistaSangue ocultistaSangue = new OcultistaSangue(habilidadeSangue, saudeSangue);
+        MenuJogo menuJogo = new MenuJogo();
+
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("escolha o agente: ");
-        int idAgente = scanner.nextInt();
-
-        int[] habilidadeAgente;
-        int[] saudeAgente;
-        int[] habilidadeCriatura;
-        int saudeCriatura;
-
-        OcultistaConhecimento ocultistaConhecimento = new OcultistaConhecimento();
-        OcultistaSangue ocultistaSangue = new OcultistaSangue();
-        OcultistaMedo ocultistaMedo = new OcultistaMedo();
-
-        ZumbiDeSangue zumbiDeSangue = new ZumbiDeSangue();
-        Marionete marionete = new Marionete();
-        Aberracao aberracao = new Aberracao();
-
-        switch (idAgente) {
-            case 1:
-                habilidadeAgente = ocultistaConhecimento.getHabilidades();
-                saudeAgente = ocultistaConhecimento.getSaude();
-                break;
-            case 2: 
-                habilidadeAgente = ocultistaSangue.getHabilidades();
-                saudeAgente = ocultistaSangue.getSaude();
-                break;
-            case 3: 
-                habilidadeAgente = ocultistaMedo.getHabilidades();
-                saudeAgente = ocultistaMedo.getSaude();
-                break;
-            default:
-                habilidadeAgente = null;
-                saudeAgente = null;
-                break;
-        }
-
-        Random random = new Random();
-
-        int idCriatura = random.nextInt(3);
-
-        switch (idCriatura) {
-            case 0:
-                System.out.println("zumbi de sangue");
-                habilidadeCriatura = zumbiDeSangue.getHabilidades();
-                saudeCriatura = zumbiDeSangue.getVida();
-                break;
-            case 1: 
-                System.out.println("marionete");
-                habilidadeCriatura = marionete.getHabilidades();
-                saudeCriatura = marionete.getVida();
-                break;
-            case 2: 
-                System.out.println("aberracao de sangue");
-                habilidadeCriatura = aberracao.getHabilidades();
-                saudeCriatura = aberracao.getVida();
-                break;
-            default:
-                habilidadeCriatura = null;
-                saudeCriatura = 0;
-                break;
-        }
-
-        Agentes agente = new Agentes(habilidadeAgente, saudeAgente);
-        Criaturas criatura = new Criaturas(habilidadeCriatura, saudeCriatura);
-
-        //MenuCombate combate = new MenuCombate();
         
-        //combate.winCombate(agente, criatura);
+        //menu temporário (deepois vamos fazer GUI)
+        
+        System.out.println("ESCOLHA UM AGENTE");
+        System.out.println("1 - Ocultista Conhecimento:\nagilidade: " + ocultistaConhecimento.getAgilidade() + "\nforça: " + ocultistaConhecimento.getForca() + "\nvigor: " + ocultistaConhecimento.getvigor() + "\natletismo: " + ocultistaConhecimento.getAtletismo() + "\n");
+        System.out.println("2 - Ocultista Medo:\nagilidade: " + ocultistaMedo.getAgilidade() + "\nforça: " + ocultistaMedo.getForca() + "\nvigor: " + ocultistaMedo.getvigor() + "\natletismo: " + ocultistaMedo.getAtletismo() + "\n");
+        System.out.println("3 - Ocultista Sangue:\nagilidade: " + ocultistaSangue.getAgilidade() + "\nforça: " + ocultistaSangue.getForca() + "\nvigor: " + ocultistaSangue.getvigor() + "\natletismo: " + ocultistaSangue.getAtletismo() + "\n");
+        
+        escolha = scanner.nextInt();
+        
+        switch (escolha) {
+            case 1:
+            agente = new Agentes(ocultistaConhecimento.getHabilidades(), ocultistaConhecimento.getSaude());
+            break;
+            case 2: 
+            agente = new Agentes(ocultistaMedo.getHabilidades(), ocultistaMedo.getSaude());
+            break;
+            case 3: 
+            agente = new Agentes(ocultistaSangue.getHabilidades(), ocultistaSangue.getSaude());
+            break;
+            default:
+            break;
+        }
+        
+        ProgressaoNivel progressaoNivel = new ProgressaoNivel(agente.getPtOcultismo(),agente);
 
-        Combate combate = new Combate();
+        System.out.println();
+        
+        mapa.setAgente(agente);
+        
+        while(agente.vivo()){
 
-        while(agente.vivo() && criatura.vivo()){
-            
-            System.out.println("\n\n");
-            System.out.println("escolha um ritual para atacar - 1, 2, 3 ou 4: ");
-            int escolha = scanner.nextInt();
-            System.out.println("\n\n");
+            mapa.drawMapa();
+        
+            char direction = scanner.next().charAt(0);
 
-            combate.combate(agente, criatura,escolha);
+            if(direction == 'p'){
+                scanner.close();
+                break;
+            } 
+
+            if(direction == 'e'){
+                menuJogo.winMenuJogo(progressaoNivel, agente);
+            }
+
+            agente.move(direction,mapa,agente);
         }
 
-        scanner.close();
+        System.out.println("fim");
     }
 }
