@@ -90,7 +90,7 @@ public class Main {
 
             agente.move(direction,mapa,agente);
         }
-
+        scanner.close();
         System.out.println("fim");
     }
 }
